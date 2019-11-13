@@ -1,0 +1,24 @@
+# ==============================================================================
+# = Mac Specific                                                               =
+# ==============================================================================
+
+# Update homebrew and other packages
+alias clean_os="chmod +x ~/base/mac/.cleanmac; sh ~/base/mac/.cleanmac"
+
+# Recursively delete `.DS_Store` files
+alias clean_ds="find . -name '*.DS_Store' -type f -ls -delete"
+
+# Brew specific
+alias cask='brew cask'
+alias brwe=brew
+
+alias brew_up=" \
+    echo 'Update Homebrew Recipes...'; \
+    brew update; \
+    brew cask upgrade; \
+    echo 'Upgrade and remove outdated formulae'; \
+    brew cleanup -s &>/dev/null; \
+    echo 'Cleanup Homebrew Cache...'; \
+    rm -rfv $(brew --cache) &>/dev/null; \
+    brew tap --repair &>/dev/null;
+"

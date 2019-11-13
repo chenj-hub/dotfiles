@@ -1,0 +1,24 @@
+# Load default dotfiles if exists
+if [ -f ~/.config/bash/.aliases ]; then
+  source ~/.config/bash/.aliases
+fi
+
+if [ -f ~/.config/bash/.paths ]; then
+  source ~/.config/bash/.paths
+fi
+
+if [ -f ~/.config/bash/.functions ]; then
+  source ~/.config/bash/.functions
+fi
+
+# Auto install select files into directory
+# Import shared tools
+if [ -f ~/.config/shared/.tools ]; then
+  source ~/.config/shared/.tools
+fi
+
+# OS Specifics
+case "$OSTYPE" in
+  darwin*) source ~/base/mac/.osx ;;
+  *) echo "Not supported: $OSTYPE" ;;
+esac

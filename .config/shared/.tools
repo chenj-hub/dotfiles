@@ -1,0 +1,27 @@
+# mv, rm, cp
+alias mv='mv -v'
+alias rm='rm -i -v'
+alias cp='cp -v'
+
+# make vim-like
+alias :q="exit"
+alias :wq="exit"
+alias :x="exit"
+
+# kill processes
+alias kp="ps -ef | fzf"
+
+# git
+alias g="git"
+alias gi="git"
+alias get="git"
+alias got="git"
+alias gs="git status"
+alias gd="git diff"
+
+# Config stored
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Folder navigation
+alias ..="cd .."
+alias ...="cd ../../"

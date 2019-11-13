@@ -1,0 +1,52 @@
+[color]
+  interactive = true
+  branch = true
+  status = true
+[core]
+  autocrlf = input
+  safecrlf = true
+  editor = vim
+[commit]
+  template = ~/.gitmessage
+  verbose = true
+[color]
+  ui = auto
+[color "diff"]
+  meta = yellow bold
+  commit = green bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+  newMoved = cyan
+  oldMoved = blue
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[mergetool "vimdiff3"]
+  cmd = vim -u ~/.vimrc -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+[help]
+  autocorrect = 1
+[push]
+  default = upstream
+  rebase=true
+  followTags = true
+[diff]
+  colorMoved = zebra
+  algorithm = patience
+[alias]
+	st = status
+	co = checkout
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  lst = ls-tree --full-tree -r HEAD
+  lsf = ls-files
