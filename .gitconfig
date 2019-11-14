@@ -50,3 +50,5 @@
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   lst = ls-tree --full-tree -r HEAD
   lsf = ls-files
+[includeIf "gitdir:~/dev/"]
+  path = ~/dev/.gitconfig
