@@ -45,9 +45,9 @@
   colorMoved = zebra
   algorithm = patience
 [alias]
-	st = status
-	co = checkout
-	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  st = status
+  co = checkout
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   lst = ls-tree --full-tree -r HEAD
   lsf = ls-files
 [includeIf "gitdir:~/dev/"]
