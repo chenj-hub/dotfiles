@@ -54,3 +54,5 @@
   path = ~/dev/.gitconfig
 [credential]
 	helper = cache
+[status]
+	showUntrackedFiles = no
