@@ -52,3 +52,5 @@
   lsf = ls-files
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
+[credential]
+	helper = cache
