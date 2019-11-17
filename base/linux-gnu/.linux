@@ -1,0 +1,1 @@
+alias clean_os="chmod +x ~/base/linux-gnu/.cleanlinux; sh ~/base/linux-gnu/.cleanlinux"

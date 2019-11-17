@@ -20,5 +20,6 @@ fi
 # OS Specifics
 case "$OSTYPE" in
   darwin*) source ~/base/mac/.osx ;;
+  linux-gnu*) source ~/base/linux-gnu/.linux ;;
   *) echo "Not supported: $OSTYPE" ;;
 esac
