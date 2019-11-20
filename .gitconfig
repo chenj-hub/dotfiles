@@ -47,12 +47,21 @@
 [alias]
   st = status
   co = checkout
-  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  lgd = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   lst = ls-tree --full-tree -r HEAD
   lsf = ls-files
+  d = diff
+  dc = diff --cached
+  dccw = diff --cached --color-words
+  dcw = diff --color-words
+  ds = diff --stat
+  dt = difftool -y
+  dtc = difftool -y --cached
+  r = reset
+  r1 = reset HEAD^
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
 [credential]
-	helper = cache
+  helper = cache
 [status]
-	showUntrackedFiles = no
+  showUntrackedFiles = no
