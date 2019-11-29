@@ -1,5 +1,5 @@
 # environment
-PS1='-> '
+PS1='>> '
 
 # Set to vi mode
 set -o vi
