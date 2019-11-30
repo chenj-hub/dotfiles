@@ -5,6 +5,9 @@
 # Update homebrew and other packages
 alias clean_os="chmod +x ~/base/mac/.cleanmac; sh ~/base/mac/.cleanmac"
 
+# Clean up docker
+alias clean_docker="chmod +x ~/base/.clean_docker; sh ~/base/.clean_docker"
+
 # Recursively delete `.DS_Store` files
 alias clean_ds="find . -name '*.DS_Store' -type f -ls -delete"
 

@@ -80,22 +80,8 @@ fi
 read -r -p "Confirm Docker Cleanup? " input
 
 case $input in
-    [yY][eE][sS]|[yY])
-      if type "docker" &> /dev/null; then
-          echo 'Cleanup Docker'
-          docker container prune -f
-          docker image prune -f
-          docker volume prune -f
-          docker network prune -f
-      fi
-      
-      if type "docker" &> /dev/null; then
-          echo 'Cleanup docker images...'
-          docker rmi $(docker images -q)
-          echo 'Cleanup stopped containers with...'
-          docker rm $(docker ps -a -q)
-      
-      fi
+    [yY][eE][sS]|[yY]) 
+ sh ~/base/.clean_docker;
  ;;
     [nN][oO]|[nN])
  echo "Skipping Docker Cleanup"
@@ -105,11 +91,6 @@ case $input in
  exit 1
  ;;
 esac
-
-echo 'Purge inactive memory...'
-sudo purge
-
-echo 'Success!'
 
 newAvailable=$(df / | tail -1 | awk '{print $4}')
 count=$((oldAvailable - newAvailable))
