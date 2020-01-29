@@ -22,6 +22,12 @@ alias gd="git diff"
 # Config stored
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# Clean up docker
+alias clean_docker="chmod +x ~/base/.clean_docker; sh ~/base/.clean_docker"
+
+# Doom command
+alias doom="~/.emacs.d/bin/doom"
+
 # Folder navigation
 alias ..="cd .."
 alias ...="cd ../../"
