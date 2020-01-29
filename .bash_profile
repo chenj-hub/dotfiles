@@ -3,6 +3,8 @@ PS1='>> '
 
 # Set to vi mode
 set -o vi
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # Disable per-terminal-session command history
 SHELL_SESSION_HISTORY=0
