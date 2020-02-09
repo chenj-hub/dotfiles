@@ -1,3 +1,7 @@
+" Setup below in 2 lines
+" :set nu ai ts=2 sw=2 et
+" :syntax on
+
 syntax on
 
 set number              " Line numbers on, always
