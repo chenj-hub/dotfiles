@@ -33,3 +33,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Adding Rust cargo to path
+export PATH="$HOME/.cargo/bin:$PATH"
