@@ -26,5 +26,7 @@ alias pack_up=" \
     echo 'Update Conda...'; \
     conda update conda; \
     echo 'Update Rust...'; \
-    rustup update;
+    rustup update; \
+    echo 'Update Doom...'; \
+    doom update;
 "
