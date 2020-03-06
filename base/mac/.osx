@@ -24,9 +24,7 @@ alias pack_up=" \
     rm -rfv $(brew --cache) &>/dev/null; \
     brew tap --repair &>/dev/null; \
     echo 'Update Conda...'; \
-    conda update conda; \
-    echo 'Update Rust...'; \
-    rustup update; \
+    conda update --all; \
     echo 'Update Doom...'; \
     doom update;
 "
