@@ -5,4 +5,4 @@ alias clean_os="chmod +x ~/base/linux-gnu/.cleanlinux; sh ~/base/linux-gnu/.clea
 alias clean_docker="chmod +x ~/base/.clean_docker; sh ~/base/.clean_docker"
 
 # Reassign Caplock to Ctrl and ESC
-alias fix_cap="setxkbmap -option ctrl:nocaps; xcape -e 'Control_L=Escape'"
+alias cap_ctrl="setxkbmap -option ctrl:nocaps; xcape -e 'Control_L=Escape'"
