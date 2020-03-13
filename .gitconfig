@@ -62,6 +62,6 @@
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
 [credential]
-  helper = cache
+	helper = cache
 [status]
   showUntrackedFiles = no
