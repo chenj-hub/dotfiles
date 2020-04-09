@@ -62,6 +62,12 @@ if type "gem" &> /dev/null; then
     gem cleanup &>/dev/null
 fi
 
+if type "conda" &> /dev/null; then
+    echo 'Cleanup conda unused packages'
+    conda clean --yes --all
+fi
+
+
 if [ "$PYENV_VIRTUALENV_CACHE_PATH" ]; then
     echo 'Removing Pyenv-VirtualEnv Cache...'
     rm -rfv $PYENV_VIRTUALENV_CACHE_PATH &>/dev/null
