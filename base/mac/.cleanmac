@@ -83,21 +83,6 @@ if type "yarn" &> /dev/null; then
     yarn cache clean --force
 fi
 
-read -r -p "Confirm Docker Cleanup? " input
-
-case $input in
-    [yY][eE][sS]|[yY]) 
- sh ~/base/.clean_docker;
- ;;
-    [nN][oO]|[nN])
- echo "Skipping Docker Cleanup"
-       ;;
-    *)
- echo "Invalid input..."
- exit 1
- ;;
-esac
-
 newAvailable=$(df / | tail -1 | awk '{print $4}')
 count=$((oldAvailable - newAvailable))
 
