@@ -18,20 +18,6 @@ sudo aptitude purge '~c'
 #sudo dpkg --list | grep linux-image | awk '{ print $2 }' | sort -V | sed -n '/'`uname -r`'/q;p' | xargs sudo apt-get -y purge
 #sudo apt-get purge $(dpkg -l | grep '^rc' | awk '{print $2}')
 
-read -r -p "Confirm Docker Cleanup? " input
-case $input in
-    [yY][eE][sS]|[yY]) 
- sh ~/base/.clean_docker;
- ;;
-    [nN][oO]|[nN])
- echo "Skipping Docker Cleanup"
-       ;;
-    *)
- echo "Invalid input..."
- exit 1
- ;;
-esac
-
 sudo test
 set -eu
 
