@@ -1,5 +1,11 @@
+#!/usr/bin/env bash
+
+# potential -e bug 
+# https://mywiki.wooledge.org/BashFAQ/105
+set -euo pipefail
+
 # environment
-PS1='>> '
+PS1='λ '
 
 # Set to vi mode
 set -o vi
