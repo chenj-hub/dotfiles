@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Cleanup and update packages
 alias clean_os="chmod +x ~/base/linux-gnu/.cleanlinux; sh ~/base/linux-gnu/.cleanlinux"
 

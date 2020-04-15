@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # .toggle_touch
 
 is_off=`synclient | grep -Pio "TouchpadOff.*?(\d)" | grep -Eo "[01]"`

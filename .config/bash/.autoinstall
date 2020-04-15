@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Load default dotfiles if exists
 if [ -f ~/.config/bash/.aliases ]; then
   source ~/.config/bash/.aliases
