@@ -3,8 +3,6 @@
   branch = true
   status = true
 [core]
-  autocrlf = input
-  safecrlf = true
   editor = vim
 [commit]
   template = ~/.gitmessage
@@ -35,12 +33,6 @@
   untracked = cyan
 [mergetool "vimdiff3"]
   cmd = vim -u ~/.vimrc -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
-[help]
-  autocorrect = 1
-[push]
-  default = upstream
-  rebase=true
-  followTags = true
 [diff]
   colorMoved = zebra
   algorithm = patience
@@ -54,8 +46,6 @@
   re = reset --hard origin/HEAD
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
-[credential]
-	helper = cache
 [status]
   showUntrackedFiles = no
 [merge]
