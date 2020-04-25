@@ -45,20 +45,13 @@
   colorMoved = zebra
   algorithm = patience
 [alias]
-  st = status
+  st = status -s
   co = checkout
-  lgd = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-  lst = ls-tree --full-tree -r HEAD
-  lsf = ls-files
-  d = diff
-  dc = diff --cached
-  dccw = diff --cached --color-words
-  dcw = diff --color-words
-  ds = diff --stat
-  dt = difftool -y
-  dtc = difftool -y --cached
-  r = reset
-  r1 = reset HEAD^
+  lol = log --graph --decorate --oneline
+  lola = log --graph --decorate --oneline --all
+  df = diff --color --color-words --abbrev
+  pu = push origin HEAD
+  re = reset --hard origin/HEAD
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
 [credential]
