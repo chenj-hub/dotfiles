@@ -12,7 +12,6 @@ alias clean_ds="find . -name '*.DS_Store' -type f -ls -delete"
 
 # Brew specific
 alias cask='brew cask'
-alias brwe=brew
 
 # Update Packages
 alias pack_up=" \
@@ -30,5 +29,4 @@ alias pack_up=" \
     echo 'Update Conda...'; \
     conda update --all; \
     echo 'Update Doom...'; \
-    doom update;
-"
+    ~/.emacs.d/bin/doom update;"

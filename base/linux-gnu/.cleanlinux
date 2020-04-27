@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+~/.emacs.d/bin/doom update
 sudo apt install deborphan
 sudo apt install aptitude
 
