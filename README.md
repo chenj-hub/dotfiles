@@ -11,7 +11,7 @@ config remote add origin [git link]
 ```sh
 git clone --separate-git-dir=$HOME/.dotfiles https://gitlab.com/kaijiak/dotfiles.git dotfiles-tmp
 rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
-rm --recursive dotfiles-tmp
+rm -r dotfiles-tmp
 ```
 
 ## Configuration
