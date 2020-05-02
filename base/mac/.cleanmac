@@ -64,6 +64,8 @@ if type "gem" &> /dev/null; then
 fi
 
 if type "conda" &> /dev/null; then
+    echo 'Update Conda...'; \
+    conda update --all; \
     echo 'Cleanup conda unused packages'
     conda clean --yes --all
 fi

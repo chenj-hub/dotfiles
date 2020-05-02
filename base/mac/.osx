@@ -13,20 +13,9 @@ alias clean_ds="find . -name '*.DS_Store' -type f -ls -delete"
 # Brew specific
 alias cask='brew cask'
 
-# Update Packages
+# Pull latest configs
 alias pack_up=" \
     echo 'Pull latest configs...'; \
     config pull; \
-    echo 'Update Homebrew Recipes...'; \
-    brew update; \
-    brew cask upgrade; \
-    echo 'Upgrade and remove outdated formulae'; \
-    brew cleanup -s &>/dev/null; \
-    echo 'Cleanup Homebrew Cache...'; \
-    brew cleanup -s &>/dev/null; \
-    rm -rfv $(brew --cache) &>/dev/null; \
-    brew tap --repair &>/dev/null; \
-    echo 'Update Conda...'; \
-    conda update --all; \
     echo 'Update Doom...'; \
     ~/.emacs.d/bin/doom update;"
