@@ -37,12 +37,12 @@
   colorMoved = zebra
   algorithm = patience
 [alias]
+  d = diff --color --color-words --abbrev
   st = status -s
   co = checkout
   lol = log --graph --decorate --oneline
   lola = log --graph --decorate --oneline --all
-  df = diff --color --color-words --abbrev
-  pu = push origin HEAD
+  poh = push origin HEAD
   prune = fetch --prune
   undo = reset --soft HEAD^
   stash-all = stash save --include-untracked
