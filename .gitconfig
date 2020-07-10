@@ -7,7 +7,6 @@
 [commit]
   template = ~/.gitmessage
   verbose = true
-  gpgSign = true
 [color]
   ui = auto
 [color "diff"]
