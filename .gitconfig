@@ -4,6 +4,7 @@
   status = true
 [core]
   editor = vim
+	autocrlf = input
 [commit]
   template = ~/.gitmessage
   verbose = true
