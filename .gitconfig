@@ -49,8 +49,6 @@
   stash-all = stash save --include-untracked
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
-[status]
-  showUntrackedFiles = all
 [merge]
 	tool = vimdiff
   ff = only
