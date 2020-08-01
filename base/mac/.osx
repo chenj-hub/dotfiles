@@ -20,7 +20,7 @@ alias pack_up=" \
     echo 'Update Doom...'; \
     ~/.emacs.d/bin/doom update; \
     echo 'Clean DS Stores...'; \
-    find . -name '*.DS_Store' -type f -ls -delete; \
+    sudo find . -name '*.DS_Store' -type f -ls -delete; \
     echo 'Clean Up...'; \
     chmod +x ~/base/mac/.cleanmac; \
     sh ~/base/mac/.cleanmac; "
