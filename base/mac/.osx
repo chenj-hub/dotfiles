@@ -17,8 +17,6 @@ alias cask='brew cask'
 alias pack_up=" \
     echo 'Pull latest configs...'; \
     config pull; \
-    echo 'Update Doom...'; \
-    ~/.emacs.d/bin/doom update; \
     echo 'Clean DS Stores...'; \
     sudo find . -name '*.DS_Store' -type f -ls -delete; \
     echo 'Clean Up...'; \
