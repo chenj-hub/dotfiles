@@ -43,7 +43,7 @@
   co = checkout
   lol = log --graph --decorate --oneline
   lola = log --graph --decorate --oneline --all
-  poh = push origin HEAD
+  pu = push origin HEAD
   prune = fetch --prune
   undo = reset --soft HEAD^
   stash-all = stash save --include-untracked
@@ -57,3 +57,5 @@
   followTags = true
 [transfer]
   fsckobjects = true
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
