@@ -38,15 +38,17 @@
   colorMoved = zebra
   algorithm = patience
 [alias]
-  d = diff --color --color-words --abbrev
-  st = status -s
   co = checkout
+  d = diff --color --color-words --abbrev
+  last = log -1 HEAD
   lol = log --graph --decorate --oneline
   lola = log --graph --decorate --oneline --all
-  pu = push origin HEAD
   prune = fetch --prune
-  undo = reset --soft HEAD^
+	pu = push origin HEAD
+  st = status -s
   stash-all = stash save --include-untracked
+	unstage = reset HEAD --
+	au = add -u
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
 [merge]
