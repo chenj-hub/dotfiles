@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Auto install select files into directory
+# Import shared tools
+if [ -f ~/.config/shared/.tools ]; then
+  source ~/.config/shared/.tools
+fi
+
 # Load default dotfiles if exists
 if [ -f ~/.config/bash/.aliases ]; then
   source ~/.config/bash/.aliases
@@ -11,12 +17,6 @@ fi
 
 if [ -f ~/.config/bash/.functions ]; then
   source ~/.config/bash/.functions
-fi
-
-# Auto install select files into directory
-# Import shared tools
-if [ -f ~/.config/shared/.tools ]; then
-  source ~/.config/shared/.tools
 fi
 
 # OS Specifics

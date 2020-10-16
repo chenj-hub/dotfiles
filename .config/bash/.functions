@@ -6,7 +6,7 @@
 
 # Always list directory contents upon 'cd'
 cd() {
-  builtin cd "$@"; ls; 
+  builtin cd "$@"; ll; 
 }               
 
 # What do?

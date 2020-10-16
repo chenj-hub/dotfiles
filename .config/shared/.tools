@@ -21,12 +21,14 @@ alias got="git"
 alias gs="git status"
 alias gd="git diff"
 
-# Config stored
+# config stored
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# Clean up docker
+# clean up docker
 alias clean_docker="chmod +x ~/base/.clean_docker; sh ~/base/.clean_docker"
 
-# Folder navigation
+# folder management
+alias ll="ls -lh"
+alias mkdir="mkdir -pv"
 alias ..="cd .."
 alias ...="cd ../../"
