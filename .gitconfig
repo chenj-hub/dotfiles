@@ -61,4 +61,5 @@
   followTags = true
 [transfer]
   fsckobjects = true
-
+[status]
+	showuntrackedfiles = no
