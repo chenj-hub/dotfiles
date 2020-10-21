@@ -61,5 +61,4 @@
   followTags = true
 [transfer]
   fsckobjects = true
-[credential]
-	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+
