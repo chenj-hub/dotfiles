@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # environment
-PS1='λ '
+PS1="$(whoami)@$(hostname) $(pwd)$(echo $'\nλ') "
 
 # Set to vi mode
 set -o vi
