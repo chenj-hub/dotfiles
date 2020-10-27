@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# environment
-PS1="┌─[λ]───[$(whoami)@$(hostname)]$(echo $'\n└───▶') "
-
 # Set to vi mode
 set -o vi
 export VISUAL=vim
