@@ -1,8 +1,7 @@
 source ~/.bash_profile
 
 # environment
-PS1=$'[%{\e[0;33m%}%n%{\e[0m%}|%{\e[1;30m%}%M%{\e[0m%}|%B%d%b] '
-RPROMPT="(%D{%d.%m.%y} | %*)"
+source ~/.config/zsh/theme
 
 # zsh specific settings
 bindkey -v
