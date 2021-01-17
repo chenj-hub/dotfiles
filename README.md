@@ -3,7 +3,7 @@
 ## Setup
 ```sh
 git init --bare $HOME/.dotfiles
-alias config='git --git-dir=$HOME/.-dotfiles/ --work-tree=$HOME'
+alias dot='git --git-dir=$HOME/.-dotfiles/ --work-tree=$HOME'
 config remote add origin [git link]
 ```
 
@@ -16,14 +16,14 @@ rm -r dotfiles-tmp
 
 ## Configuration
 ```sh
-config config status.showUntrackedFiles no
-config remote set-url origin [git link]
+dot config status.showUntrackedFiles no
+dot remote set-url origin [git link]
 ```
 
 ## Usage Example
 ```sh
-config status
-config add .gitconfig
-config commit -m 'Add gitconfig'
-config push
+dot status
+dot add .gitconfig
+dot commit -m 'Add gitconfig'
+dot push
 ```
