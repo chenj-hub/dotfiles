@@ -9,7 +9,7 @@ config remote add origin [git link]
 
 ## Replication
 ```sh
-git clone --separate-git-dir=$HOME/.dotfiles https://gitlab.com/jaihn/dotfiles.git dotfiles-tmp
+git clone --separate-git-dir=$HOME/.dotfiles https://gitlab.com/chenj-lab/dotfiles.git dotfiles-tmp
 rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
 rm -r dotfiles-tmp
 ```
