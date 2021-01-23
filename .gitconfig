@@ -37,6 +37,7 @@
 [diff]
   colorMoved = zebra
   algorithm = patience
+	tool = vimdiff
 [alias]
 	au = add -u
   co = checkout
@@ -63,3 +64,5 @@
   fsckobjects = true
 [status]
 	showuntrackedfiles = no
+[difftool]
+	prompt = false
