@@ -9,7 +9,7 @@ config remote add origin [git link]
 
 ## Replication
 ```sh
-git clone --separate-git-dir=$HOME/.dotfiles https://gitlab.com/chenj-lab/dotfiles.git dotfiles-tmp
+git clone --separate-git-dir=$HOME/.dotfiles @git_link@
 rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
 rm -r dotfiles-tmp
 ```
@@ -17,7 +17,7 @@ rm -r dotfiles-tmp
 ## Configuration
 ```sh
 dot config status.showUntrackedFiles no
-dot remote set-url origin [git link]
+dot remote set-url origin @git_link@
 ```
 
 ## Usage Example
