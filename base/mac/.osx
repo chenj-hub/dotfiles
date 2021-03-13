@@ -19,3 +19,6 @@ alias pack_up=" \
     echo 'Clean Up...'; \
     chmod +x ~/base/mac/.cleanmac; \
     sh ~/base/mac/.cleanmac; "
+
+# Bundle Brewfile
+alias brew_dump="brew bundle dump --force --file=~/base/mac/Brewfile"
