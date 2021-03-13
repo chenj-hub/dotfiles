@@ -4,7 +4,7 @@
 ```sh
 git init --bare $HOME/.dotfiles
 alias dot='git --git-dir=$HOME/.-dotfiles/ --work-tree=$HOME'
-config remote add origin [git link]
+config remote add origin @git_link@
 ```
 
 ## Replication
