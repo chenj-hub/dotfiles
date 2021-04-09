@@ -20,5 +20,3 @@ alias pack_up=" \
     chmod +x ~/base/mac/.cleanmac; \
     sh ~/base/mac/.cleanmac; "
 
-# Bundle Brewfile
-alias brew_dump="brew bundle dump --force --file=~/base/mac/Brewfile"
