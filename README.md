@@ -9,7 +9,7 @@ dot remote add origin @git_link@
 
 ## Replication
 ```sh
-git clone --separate-git-dir=$HOME/.dotfiles @git_link@
+git clone --separate-git-dir=$HOME/.dotfiles @git_link@ dotfiles-tmp
 rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
 rm -r dotfiles-tmp
 ```
