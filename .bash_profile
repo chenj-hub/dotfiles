@@ -15,3 +15,7 @@ export HISTCONTROL="erasedups:ignoreboth"
 if [ -f ~/.config/bash/.autoinstall ]; then
   source ~/.config/bash/.autoinstall
 fi
+
+if [ -d ~/.poetry ]; then
+    source ~/.py_setup
+fi
