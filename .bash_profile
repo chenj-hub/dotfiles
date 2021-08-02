@@ -16,6 +16,6 @@ if [ -f ~/.config/bash/.autoinstall ]; then
   source ~/.config/bash/.autoinstall
 fi
 
-if [ -d ~/.pyenv ]; then
+if [ -x "$(command -v pyenv)" ]; then
     source ~/.py_setup
 fi
