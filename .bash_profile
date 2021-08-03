@@ -17,5 +17,11 @@ if [ -f ~/.config/bash/.autoinstall ]; then
 fi
 
 if [ -x "$(command -v pyenv)" ]; then
-    source ~/.py_setup
+  source ~/.py_setup
 fi
+
+# Setup emacs
+if [ -d ~/.emacs.d/bin ]; then
+  export PATH="$HOME/.emacs.d/bin:$PATH"
+fi
+
