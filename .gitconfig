@@ -4,7 +4,7 @@
   status = true
 [core]
   editor = vim
-	autocrlf = input
+  autocrlf = input
 [commit]
   template = ~/.gitmessage
   verbose = true
@@ -37,9 +37,9 @@
 [diff]
   colorMoved = zebra
   algorithm = patience
-	tool = vimdiff
+  tool = vimdiff
 [alias]
-	au = add -u
+  au = add -u
   co = checkout
   clean-branches = "!cleanBranches(){ git for-each-ref --format '%(refname:short)' refs/heads | grep -v master | xargs git branch -D; }; cleanBranches"
   d = diff --color --color-words --abbrev
@@ -47,15 +47,15 @@
   lol = log --graph --decorate --oneline
   lola = log --graph --decorate --oneline --all
   prune = fetch --prune
-	pu = push origin HEAD
+  pu = push origin HEAD
   ru = reset --hard @{upstream}
   st = status -s
   stash-all = stash save --include-untracked
-	unstage = reset HEAD --
+  unstage = reset HEAD --
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
 [merge]
-	tool = vimdiff
+  tool = vimdiff
   ff = only
 [push]
   default = simple
@@ -63,6 +63,6 @@
 [transfer]
   fsckobjects = true
 [status]
-	showuntrackedfiles = no
+  showuntrackedfiles = no
 [difftool]
-	prompt = false
+  prompt = false
