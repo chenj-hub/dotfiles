@@ -5,6 +5,7 @@
 [core]
   editor = vim
   autocrlf = input
+  pager = less -FMRiX
 [commit]
   template = ~/.gitmessage
   verbose = true
@@ -52,6 +53,7 @@
   st = status -s
   stash-all = stash save --include-untracked
   unstage = reset HEAD --
+  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
 [merge]
