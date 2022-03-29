@@ -125,7 +125,6 @@ set pastetoggle=<F11>
 
 " Set a character to show in place of white space characters
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set list
 
 "------------------------------------------------------------
 " Indentation options {{{1
