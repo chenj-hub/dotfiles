@@ -28,8 +28,12 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias clean_docker="chmod +x ~/base/.clean_docker; sh ~/base/.clean_docker"
 
 # folder management
-alias ll="ls -lh --color=auto"
-alias la="ls -lA --color=auto"
+alias ls="ls --color=auto"
+alias ll="ls -lh"
+alias la="ls -lA"
 alias mkdir="mkdir -pv"
 alias ..="cd .."
 alias ...="cd ../../"
+
+# grep
+alias grep="grep --color=auto"
