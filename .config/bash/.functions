@@ -13,3 +13,34 @@ cd() {
 function help() {
       curl cht.sh/$1
 }
+
+# Always display error code unless it's 0
+prompt_show_ec () {
+ # Catch exit code
+ ec=$?
+ # Display exit code in red text unless zero
+ if [ $ec -ne 0 ];then
+  echo -e "\033[31;1m[$ec]\033[0m"
+ fi
+}
+PROMPT_COMMAND="prompt_show_ec; $PROMPT_COMMAND"
+
+# Create and enter a directory
+function mkcd { 
+ mkdir "$1"; 
+ cd "$1"; 
+}
+
+# With this function you can explore the filsystem,
+# and display contents of both directories and files
+# without going to the beginning of the line to
+# switch between ls and less.
+l() {
+    if [ -z "$2" -a -f "$1" ] ; then
+        less "$1"
+    else
+        ls -l --color=auto "$@"
+    fi
+}
+
+# Create and enter a directory
