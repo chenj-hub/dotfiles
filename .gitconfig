@@ -54,6 +54,7 @@
   stash-all = stash save --include-untracked
   unstage = reset HEAD --
   dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+  branch-recent = for-each-ref --sort=committerdate refs/heads/ --format=%(committerdate) %(refname:short)
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
 [merge]
