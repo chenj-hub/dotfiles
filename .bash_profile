@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set to vi mode
-set -o vi
+set -o emacs
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
