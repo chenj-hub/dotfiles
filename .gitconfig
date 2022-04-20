@@ -50,6 +50,7 @@
   prune = fetch --prune
   pu = push origin HEAD
   ru = reset --hard @{upstream}
+  rull = !git fetch && git reset --hard @{upstream}
   st = status -s
   stash-all = stash save --include-untracked
   unstage = reset HEAD --
