@@ -50,7 +50,7 @@ if type "brew" &>/dev/null; then
     brew update
     echo 'Upgrade and remove outdated formulae'
     brew upgrade
-    brew upgrade --cask
+    brew upgrade --greedy
     echo 'Cleanup Homebrew Cache...'
     brew cleanup -s &>/dev/null
     rm -rfv $(brew --cache) &>/dev/null
