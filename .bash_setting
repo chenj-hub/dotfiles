@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# Set to vi mode
+set -o emacs
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# Disable per-terminal-session command history
+SHELL_SESSION_HISTORY=0
+
+# no duplicate entries
+HISTSIZE=5000
+HISTFILESIZE=-1
+HISTCONTROL=ignoredups:erasedups
+PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+set completion-ignore-case on
+
+# Auto Install Files
+if [ -f ~/.config/bash/.autoinstall ]; then
+  source ~/.config/bash/.autoinstall
+fi
+
+if [ -x "$(command -v pyenv)" ]; then
+  source ~/.py_setup
+fi
+
+# Setup emacs
+if [ -d ~/.emacs.d/bin ]; then
+  export PATH="$HOME/.emacs.d/bin:$PATH"
+fi
+
+# display the elapsed and finish times of all commands > 10s
+timer_file=`mktemp -t bash-timer.$$.XXXXXXXXXX`
+begin_timer () {
+    date +%s%3N > $timer_file
+}
+PS0="$PS0\$(begin_timer)"
+end_timer () {
+    local begin=$(cat $timer_file)
+    if [ -n "$begin" ]; then
+        local end=$(date +%s%3N)
+        local elapsed=$[$end-$begin]
+        if [ "$elapsed" -ge 10000 ]; then
+            local ms=$[$elapsed%1000]
+            local s=$[($elapsed/1000)%60]
+            local min=$[($elapsed/60000)%60]
+            local h=$[$elapsed/3600000]
+            printf '\e[35m%i:%0.2i:%0.2i\e[2m.%0.3i %s\e[0m\n' $h $min $s $ms "`date -d @$[$end/1000] '+%F %k:%M:%S'`"
+        fi
+    fi
+    echo > $timer_file
+}
+PROMPT_COMMAND="$PROMPT_COMMAND end_timer;"
+before_exit () {
+    rm $timer_file
+}
+trap before_exit EXIT

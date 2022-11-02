@@ -1,4 +1,6 @@
-source ~/.bash_profile
+#!/bin/zsh
+# Steal what I've done for bash
+source ~/.bash_setting
 
 # environment
 source ~/.config/zsh/theme

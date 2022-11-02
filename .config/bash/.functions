@@ -35,8 +35,8 @@ function mkcd {
 # and display contents of both directories and files
 # without going to the beginning of the line to
 # switch between ls and less.
-l() {
-    if [ -z "$2" -a -f "$1" ] ; then
+function l() {
+    if [ -z "$2" -a -f "$1" ];then
         less "$1"
     else
         ls -l --color=auto "$@"

@@ -59,6 +59,8 @@
   branch-recent = for-each-ref --sort=committerdate refs/heads/ --format=%(committerdate) %(refname:short)
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig
+[includeIf "gitdir:~/Development/"]
+  path = ~/Development/.gitconfig
 [merge]
   tool = vimdiff
   ff = only
