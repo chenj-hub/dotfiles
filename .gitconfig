@@ -73,3 +73,5 @@
   showuntrackedfiles = no
 [difftool]
   prompt = false
+[maintenance]
+  repo = /Users/jackies/znap/zsh-autocomplete

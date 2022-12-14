@@ -16,3 +16,4 @@ setopt HIST_SAVE_NO_DUPS
 
 zstyle ':znap:*' repos-dir ~/znap
 source ~/zsh-snap/znap.zsh
+znap source marlonrichert/zsh-autocomplete
