@@ -74,4 +74,4 @@
 [difftool]
   prompt = false
 [maintenance]
-  repo = /Users/jackies/znap/zsh-autocomplete
+  repo = ~/znap/zsh-autocomplete
