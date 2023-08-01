@@ -2,8 +2,8 @@
 # Steal what I've done for bash
 source ~/.bash_setting
 
-# environment
-source ~/.config/zsh/theme
+# Prompt
+PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b [%*] %# '
 
 # zsh specific settings
 bindkey -e
