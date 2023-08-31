@@ -3,7 +3,7 @@
 source ~/.bash_setting
 
 # Prompt
-PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b [%*] %# '
+source ~/.config/zsh/simple-prompt.zsh
 
 # zsh specific settings
 bindkey -e
