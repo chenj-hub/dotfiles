@@ -23,3 +23,4 @@ source ~/Repos/znap/znap.zsh  # Start Znap
 zstyle ':znap:*' repos-dir ~/znap
 source ~/zsh-snap/znap.zsh
 znap source marlonrichert/zsh-autocomplete
+
