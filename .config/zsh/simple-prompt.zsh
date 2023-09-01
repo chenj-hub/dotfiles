@@ -15,6 +15,7 @@ PROMPT_OK=008
 PROMPT_ERR=009
 normal="%{$FX[reset]$FG[255]%}"
 
+setopt PROMPT_SUBST
 
 function git_prompt {
     # Only run if in a  git repo
