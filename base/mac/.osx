@@ -22,3 +22,13 @@ alias pack_up=" \
     chmod +x ~/base/mac/.cleanmac; \
     sh ~/base/mac/.cleanmac; "
 
+# Setup RubyMine
+if [ -d /Applications/RubyMine.app/Contents/MacOS ]; then
+  export PATH="/Applications/RubyMine.app/Contents/MacOS:$PATH"
+fi
+
+# Setup PyCharm
+if [ -d /Applications/PyCharm.app/Contents/MacOS ]; then
+  export PATH="/Applications/PyCharm.app/Contents/MacOS:$PATH"
+fi
+

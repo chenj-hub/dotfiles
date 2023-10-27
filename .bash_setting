@@ -20,6 +20,10 @@ if [ -f ~/.config/bash/.autoinstall ]; then
   source ~/.config/bash/.autoinstall
 fi
 
+if [ -f ~/.work ]; then
+  source ~/.work
+fi
+
 if [ -x "$(command -v pyenv)" ]; then
   source ~/.py_setup
 fi
