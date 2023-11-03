@@ -40,9 +40,12 @@
   algorithm = patience
   tool = vimdiff
 [alias]
+  db = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
   au = add -u
-  co = "!checkoutBranch(){ git checkout $1 || git checkout -b $1; }; checkoutBranch"
-  clean-branches = !"git branch --merged | grep -vE 'main|master|\\*' | xargs -n 1 git branch -D"
+  co = checkout
+  com = "!git checkout $(git db)"
+  cob = "!checkoutBranch(){ git checkout $1 || git checkout -b $1; }; checkoutBranch"
+  clean-branches = "!git branch | grep -vE $(git db) | xargs -n 1 git branch -D"
   d = diff --color --color-words --abbrev
   last = log -1 HEAD
   lol = log --graph --decorate --oneline
