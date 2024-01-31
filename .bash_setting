@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Enable starship prompt
+eval "$(starship init $(basename $SHELL))"
+
 # Set to vi mode
 set -o emacs
 export VISUAL=vim
@@ -59,3 +62,4 @@ before_exit () {
     rm $timer_file
 }
 trap before_exit EXIT
+

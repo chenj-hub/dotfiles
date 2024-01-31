@@ -3,7 +3,7 @@
 ## Setup
 ```sh
 git init --bare $HOME/.dotfiles
-alias dot='git --git-dir=$HOME/.-dotfiles/ --work-tree=$HOME'
+alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dot remote add origin @git_link@
 ```
 

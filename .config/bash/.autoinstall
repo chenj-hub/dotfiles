@@ -19,11 +19,6 @@ if [ -f ~/.config/bash/.functions ]; then
   source ~/.config/bash/.functions
 fi
 
-if [ -f ~/.config/bash/.work ]; then
-  source ~/.config/bash/.work
-fi
-
-
 # OS Specifics
 case "$OSTYPE" in
   darwin*) source ~/base/mac/.osx ;;
