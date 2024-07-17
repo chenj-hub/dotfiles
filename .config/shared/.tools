@@ -22,7 +22,7 @@ alias gs="git status"
 alias gd="git diff"
 
 # config stored
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias d='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # clean up docker
 alias clean_docker="chmod +x ~/base/.clean_docker; sh ~/base/.clean_docker"
