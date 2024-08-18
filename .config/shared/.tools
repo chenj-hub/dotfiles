@@ -37,5 +37,4 @@ alias ...="cd ../../"
 
 # grep
 alias grep="grep --color=auto"
-alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 

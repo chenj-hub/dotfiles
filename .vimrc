@@ -20,6 +20,9 @@ if has('syntax')
   syntax on
 endif
 
+" map leader to comma
+let mapleader = ","
+
 "------------------------------------------------------------
 " Must have options {{{1
 "
@@ -144,6 +147,33 @@ set expandtab
 
 
 "------------------------------------------------------------
+" Plugins {{{1
+"
+" Useful Plugins
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+
+" Install Plugins with vim-plug
+call plug#begin()
+
+" Fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
+"------------------------------------------------------------
 " Mappings {{{1
 "
 " Useful mappings
@@ -156,4 +186,16 @@ map Y y$
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
+" Plugin mappings
+
+" Search files in git index
+nnoremap <C-p> :GFiles<Cr>
+
+" Word search through project
+nnoremap <C-g> :Ag<Cr>
+
+" Search buffers
+nnoremap <silent><leader>l :Buffers<CR>
+
 "------------------------------------------------------------
+

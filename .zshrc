@@ -16,3 +16,5 @@ if [ "$(uname)"=="Darwin" ] && [ -f "$(brew --prefix)/share/zsh-autosuggestions/
   source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
