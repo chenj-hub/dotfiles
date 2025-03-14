@@ -1,0 +1,24 @@
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Label</key>
+		<string>{{ maintenance_service }}</string>
+		<key>ProgramArguments</key>
+		<array>
+			<string>{{ maintenance_script_path }}</string>
+		</array>
+		<key>StandardErrorPath</key>
+		<string>{{ maintenance_log_path_stderr }}</string>
+		<key>StandardOutPath</key>
+		<string>{{ maintenance_log_path_stdout }}</string>
+		<key>RunAtLoad</key>
+		<true/>
+		<key>KeepAlive</key>
+		<dict>
+			<key>SuccessfulExit</key>
+			<false/>
+		</dict>
+		<key>StartInterval</key>
+		<integer>{{ maintenance_interval }}</integer>
+	</dict>
+</plist>

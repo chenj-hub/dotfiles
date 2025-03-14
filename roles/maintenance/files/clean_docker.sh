@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if type "docker" &> /dev/null; then
      echo 'Cleanup Docker'
@@ -7,7 +7,7 @@ if type "docker" &> /dev/null; then
      docker volume prune -f
      docker network prune -f
 fi
- 
+
 if type "docker" &> /dev/null; then
      echo 'Cleanup docker images...'
      docker rmi $(docker images -q)

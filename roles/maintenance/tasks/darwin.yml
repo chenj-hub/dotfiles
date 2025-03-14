@@ -43,20 +43,37 @@
   changed_when: false
   become: true
 
-# TODO: Figure out how to delete ".DS_Store" files
-# - name: Find ".DS_Store" files
-#   ansible.builtin.find:
-#     path: /
-#     recurse: true
-#     file_type: file
-#     patterns:
-#       - ".DS_Store"
-#   register: ds_store_files
+- name: Install maintenance script
+  become: true
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/maintenance.sh"
+    dest: "{{ maintenance_script_path }}"
+    mode: "0755"
+    owner: root
+    group: wheel
+  register: maintenance_script
 
-# - name: Delete ".DS_Store" files
-#   ansible.builtin.file:
-#     path: "{{ item.path }}"
-#     state: absent
-#   loop: "{{ ds_store_files.files }}"
-#   become: true
-#   changed_when: false
+- name: Run maintenance script
+  become: true
+  ansible.builtin.command: "{{ maintenance_script_path }}"
+  changed_when: false
+  register: maintenance_script_output
+
+- name: Create maintenance launchDaemon
+  become: true
+  ansible.builtin.template:
+    src: "{{ maintenance_service }}.plist"
+    dest: "/Library/LaunchDaemons/{{ maintenance_service }}.plist"
+    owner: root
+    group: wheel
+    mode: "0644"
+  register: maintenance_launch_daemon
+
+- name: Kickstart maintenance LaunchDaemon
+  become: true
+  changed_when: false
+  ansible.builtin.shell: |
+    set -o pipefail
+    launchctl unload -w /Library/LaunchDaemons/{{ maintenance_service }}.plist || true
+    launchctl load -w /Library/LaunchDaemons/{{ maintenance_service }}.plist || true
+  when: maintenance_launch_daemon.changed or maintenance_script.changed

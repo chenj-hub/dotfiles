@@ -1,0 +1,6 @@
+---
+maintenance_script_path: /usr/local/bin/maintenance
+maintenance_log_path_stdout: /var/log/maintenance_daemon.log
+maintenance_log_path_stderr: /var/log/maintenance_daemon_err.log
+maintenance_service: com.dotfiles.maintenance
+maintenance_interval: 10800 # 3 hours
