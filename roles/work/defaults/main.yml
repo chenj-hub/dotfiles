@@ -1,6 +1,7 @@
 ---
 work_tap_list:
   - hashicorp/tap
+  - xcodesorg/made
 
 work_list:
   - apparency
@@ -10,3 +11,4 @@ work_list:
   - mist-cli
   - shellcheck
   - suspicious-package
+  - xcodesorg/made/xcodes
