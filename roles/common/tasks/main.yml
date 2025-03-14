@@ -8,6 +8,7 @@
   with_items:
     - .bash_settings
     - .gitattributes
+    - .gitignore
     - .gitmessage
     - .ideavimrc
     - .tmux.conf
