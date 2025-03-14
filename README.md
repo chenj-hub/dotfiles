@@ -23,7 +23,7 @@ $ ./ansible_wrapper.sh ansible-playbook dotfiles.yml --check --ask-become-pass
 Use ansible-lint for styling
 
 ```bash
-$ ./ansible_wrapper.sh ansible-lint autofix
+$ ./ansible_wrapper.sh ansible-lint --fix
 ```
 
 Update requirements.txt
