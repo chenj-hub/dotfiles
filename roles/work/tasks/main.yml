@@ -6,6 +6,11 @@
     owner: "{{ ansible_env.USER }}"
     mode: "0644"
 
+- name: Tap a Homebrew repository, state present
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+  loop: "{{ work_tap_list }}"
+
 - name: Install dependencies
   community.general.homebrew:
     name: "{{ item }}"

@@ -32,7 +32,7 @@ fi
 
 if [[ ! -d $DOT_ANSIBLE_VENV ]]; then
   if [[ $OSTYPE == darwin* ]]; then
-    uv venv --python "$(brew --prefix)/bin/python@$PYTHON_VERSION" "$DOT_ANSIBLE_VENV"
+    uv venv --python "$(brew --prefix)/bin/python$PYTHON_VERSION" "$DOT_ANSIBLE_VENV"
   else
     uv venv --python "$PYTHON_VERSION" "$DOT_ANSIBLE_VENV"
   fi

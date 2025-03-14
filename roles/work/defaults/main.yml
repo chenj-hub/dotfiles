@@ -1,4 +1,7 @@
 ---
+work_tap_list:
+  - hashicorp/tap
+
 work_list:
   - awscli
   - cursor
