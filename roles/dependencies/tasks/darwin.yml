@@ -10,10 +10,15 @@
     state: present
   with_items: "{{ dependencies_list }}"
 
-- name: Install starship
+- name: Install mac specific dependencies
   community.general.homebrew:
-    name: starship
+    name: "{{ item }}"
     state: present
+  loop:
+    - karabiner-elements
+    - logi-options+
+    - starship
+    - stats
 
 - name: Repair brew taps
   ansible.builtin.shell: |-

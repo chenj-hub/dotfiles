@@ -3,8 +3,10 @@ work_tap_list:
   - hashicorp/tap
 
 work_list:
+  - apparency
   - awscli
   - cursor
   - hashicorp/tap/packer
   - mist-cli
   - shellcheck
+  - suspicious-package
