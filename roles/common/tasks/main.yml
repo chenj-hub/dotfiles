@@ -4,13 +4,13 @@
     src: "{{ role_path }}/files/{{ item }}"
     dest: "{{ ansible_env.HOME }}/{{ item }}"
     owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
     mode: "0644"
   with_items:
     - .bash_settings
     - .gitattributes
     - .gitmessage
     - .ideavimrc
+    - .tmux.conf
     - .vimrc
     - .zsh_settings
 
@@ -19,7 +19,6 @@
     path: "{{ ansible_env.HOME }}/Development"
     state: directory
     owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
     mode: "0755"
 
 - name: Create .gitconfig in home directory
@@ -27,7 +26,6 @@
     path: "{{ ansible_env.HOME }}/.gitconfig"
     state: touch
     owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
     mode: "0644"
 
 - name: Copy gitconfig to Development directory
@@ -35,7 +33,6 @@
     src: "{{ role_path }}/files/.gitconfig"
     dest: "{{ ansible_env.HOME }}/Development/.gitconfig"
     owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
     mode: "0644"
 
 - name: Append gitconfig includeIf to global gitconfig

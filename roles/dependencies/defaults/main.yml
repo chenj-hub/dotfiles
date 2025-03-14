@@ -4,3 +4,5 @@ dependencies_list:
   - git
   - jq
   - ripgrep
+  - tmux
+  - vim
