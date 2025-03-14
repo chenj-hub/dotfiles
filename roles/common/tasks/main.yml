@@ -1,0 +1,66 @@
+---
+- name: Copy dotfiles to home directory
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    mode: "0644"
+  with_items:
+    - .bash_settings
+    - .gitattributes
+    - .gitignore
+    - .gitmessage
+    - .ideavimrc
+    - .tmux.conf
+    - .vimrc
+    - .zsh_settings
+
+- name: Create Development directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Development"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+
+- name: Create .gitconfig in home directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.gitconfig"
+    state: touch
+    owner: "{{ ansible_env.USER }}"
+    mode: "0644"
+
+- name: Copy gitconfig to Development directory
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/.gitconfig"
+    dest: "{{ ansible_env.HOME }}/Development/.gitconfig"
+    owner: "{{ ansible_env.USER }}"
+    mode: "0644"
+
+- name: Append gitconfig includeIf to global gitconfig
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_env.HOME }}/.gitconfig"
+    marker: "# {mark} Import gitconfig for Development directory"
+    block: |
+      [include]
+        path = ~/Development/.gitconfig
+
+- name: Import shell settings
+  ansible.builtin.lineinfile:
+    dest: "{{ item.rc_file }}"
+    line: "source {{ item.setting }}"
+    state: present
+  loop:
+    - { rc_file: "{{ ansible_env.HOME }}/.zshrc", setting: "{{ ansible_env.HOME }}/.zsh_settings" }
+    - { rc_file: "{{ ansible_env.HOME }}/.bashrc", setting: "{{ ansible_env.HOME }}/.bash_settings" }
+
+- name: Use starship in shells if available
+  ansible.builtin.blockinfile:
+    path: "{{ item.rc_file }}"
+    marker: "# {mark} Starship prompt for {{ item.shell }}"
+    block: |
+      if command -v starship; then
+        eval "$(starship init {{ item.shell }})"
+      fi
+  loop:
+    - { shell: "zsh", rc_file: "{{ ansible_env.HOME }}/.zshrc" }
+    - { shell: "bash", rc_file: "{{ ansible_env.HOME }}/.bashrc" }

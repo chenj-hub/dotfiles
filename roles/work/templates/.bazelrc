@@ -1,0 +1,4 @@
+startup --client_debug
+common --show_timestamps --verbose_failures
+
+build --jvmopt=-Djava.util.logging.config.file={{ ansible_env.HOME }}/debug.logging.properties

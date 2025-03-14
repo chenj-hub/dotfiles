@@ -1,0 +1,14 @@
+*.iml
+*.swp
+*.swo
+.bundle
+.DS_Store
+.idea
+.history
+.rbx
+.lock
+node_modules
+/tags
+appbuilder*
+empty.zip
+settings.json

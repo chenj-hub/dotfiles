@@ -1,0 +1,25 @@
+---
+- name: Clean up some directories
+  ansible.builtin.shell: |
+    rm -rf "{{ item }}/*"
+  changed_when: false
+  become: true
+  with_items:
+    - /var/lib/apt/lists
+    - "{{ ansible_env.HOME }}/.cache/thumbnails"
+
+- name: Remove useless packages from the cache
+  ansible.builtin.apt:
+    autoclean: true
+  become: true
+
+- name: Remove dependencies that are no longer required and purge their configuration files
+  ansible.builtin.apt:
+    autoremove: true
+    purge: true
+  become: true
+
+- name: Run the equivalent of "apt-get clean" as a separate step
+  ansible.builtin.apt:
+    clean: true
+  become: true

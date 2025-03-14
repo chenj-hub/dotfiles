@@ -1,0 +1,28 @@
+---
+- name: Upgrade all Homebrew packages
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
+
+- name: Install dependencies
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ dependencies_list }}"
+
+- name: Install mac specific dependencies
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - hiddenbar
+    - karabiner-elements
+    - logi-options+
+    - rectangle
+    - starship
+    - stats
+
+- name: Repair brew taps
+  ansible.builtin.shell: |-
+    brew tap --repair &>/dev/null
+  changed_when: false

@@ -1,29 +1,33 @@
 # dotfiles setup 
 
-## Setup
-```sh
-git init --bare $HOME/.dotfiles
-alias d='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-d remote add origin @git_link@
+## Run ansible locally
+
+Setup home machines
+```bash
+$ ./ansible_wrapper.sh ansible-playbook dotfiles.yml --ask-become-pass
 ```
 
-## Replication
-```sh
-git clone --separate-git-dir=$HOME/.dotfiles @git_link@ dotfiles-tmp
-rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
-rm -r dotfiles-tmp
+Setup work machines
+```bash
+$ ./ansible_wrapper.sh ansible-playbook dotfiles.yml --ask-become-pass --extra-vars="work=true"
 ```
 
-## Configuration
-```sh
-d config status.showUntrackedFiles no
-d remote set-url origin @git_link@
+## Development
+
+Check playbook
+
+```bash
+$ ./ansible_wrapper.sh ansible-playbook dotfiles.yml --check --ask-become-pass
 ```
 
-## Usage Example
-```sh
-d status
-d add .gitconfig
-d commit -m 'Add gitconfig'
-d push
+Use ansible-lint for styling
+
+```bash
+$ ./ansible_wrapper.sh ansible-lint autofix
+```
+
+Update requirements.txt
+
+```bash
+$ uv pip freeze > requirements.txt 
 ```
