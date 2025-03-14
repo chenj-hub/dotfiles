@@ -1,0 +1,11 @@
+---
+- name: Setup local machines
+  hosts: localhost
+  connection: local
+  roles:
+    - role: common
+      tags: common
+    - role: dependencies
+      tags: deps
+    - role: maintenance
+      tags: maintenance

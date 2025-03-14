@@ -1,0 +1,43 @@
+---
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  become: true
+
+- name: Install dependencies
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items: "{{ dependencies_list }}"
+
+- name: Upgrade dependencies
+  ansible.builtin.apt:
+    upgrade: dist
+  become: true
+
+- name: Install debian specific packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - linux-headers-generic
+    - build-essential
+
+- name: Check if starship is installed
+  ansible.builtin.command: which starship
+  changed_when: false
+  register: starship_installed
+
+- name: Install starship
+  ansible.builtin.get_url:
+    url: https://starship.rs/install.sh
+    dest: /tmp/install_starship.sh
+    mode: "0755"
+  when: starship_installed.rc != 0
+
+- name: Run starship installer
+  ansible.builtin.command: /tmp/install_starship.sh --yes
+  when: starship_installed.rc != 0
+  changed_when: false

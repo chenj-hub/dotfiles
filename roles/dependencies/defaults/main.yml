@@ -1,0 +1,6 @@
+---
+dependencies_list:
+  - fzf
+  - git
+  - jq
+  - ripgrep

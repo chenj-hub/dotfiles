@@ -1,0 +1,8 @@
+---
+- name: Install dependencies for Darwin
+  ansible.builtin.include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install dependencies for Debian
+  ansible.builtin.include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'

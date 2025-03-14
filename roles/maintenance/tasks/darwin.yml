@@ -1,0 +1,37 @@
+---
+- name: Clean up some directories
+  ansible.builtin.shell: |
+    rm -rfv "{{ item }}" &>/dev/null
+  changed_when: false
+  with_item:
+    # 'Empty the Trash on all mounted volumes and the main HDD...'
+    - "/Volumes/*/.Trashes/*"
+    - "{{ ansible_env.HOME }}/.Trash/*"
+    # 'Clear System Log Files...'
+    - "/private/var/log/asl/*.asl"
+    - "/Library/Logs/DiagnosticReports/*"
+    - "/Library/Logs/Adobe/*"
+    - "{{ ansible_env.HOME }}/Library/Containers/com.apple.mail/Data/Library/Logs/Mail/*"
+    - "{{ ansible_env.HOME }}/Library/Logs/CoreSimulator/*"
+    # 'Clear Spotify Cache Files...'
+    - "{{ ansible_env.HOME }}/Library/Application Support/Spotify/PersistentCache/Update/*.tbz"
+    - "{{ ansible_env.HOME }}/Library/Caches/com.spotify.client/Data"
+    # 'Clear Adobe Cache Files...'
+    - "{{ ansible_env.HOME }}/Library/Application Support/Adobe/Common/Media Cache Files/*"
+    # 'Cleanup iOS Applications...'
+    - "{{ ansible_env.HOME }}/Music/iTunes/iTunes Media/Mobile Applications/*"
+    # 'Remove iOS Device Backups...'
+    - "{{ ansible_env.HOME }}/Library/Application Support/MobileSync/Backup/*"
+    # 'Cleanup XCode Derived Data and Archives...'
+    - "{{ ansible_env.HOME }}/Library/Developer/Xcode/DerivedData/*"
+    - "{{ ansible_env.HOME }}/Library/Developer/Xcode/Archives/*"
+
+- name: Clean up Homebrew cache
+  ansible.builtin.shell: |
+    brew cleanup -s &>/dev/null
+    rm -rfv "$(brew --cache)" &>/dev/null
+  changed_when: false
+- name: Clean DS_Store files
+  ansible.builtin.shell: |
+    find "{{ ansible_env.HOME }}" -name '*.DS_Store' -type f -ls -delete
+  changed_when: false

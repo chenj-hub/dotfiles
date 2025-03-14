@@ -1,0 +1,22 @@
+---
+- name: Upgrade all Homebrew packages
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
+    upgrade_options: "--greedy"
+
+- name: Install dependencies
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ dependencies_list }}"
+
+- name: Install starship
+  community.general.homebrew:
+    name: starship
+    state: present
+
+- name: Repair brew taps
+  ansible.builtin.shell: |-
+    brew tap --repair &>/dev/null
+  changed_when: false

@@ -1,0 +1,60 @@
+---
+- name: Copy clean_docker.script to executable path
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/clean_docker.sh"
+    dest: /usr/local/bin/clean_docker
+    owner: root
+    mode: "0755"
+  become: true
+
+- name: Cleanup darwin machines
+  ansible.builtin.include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Cleanup debian machines
+  ansible.builtin.include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Check for gem
+  ansible.builtin.command: which gem
+  register: gem_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: Cleanup any old versions of gems
+  ansible.builtin.command: gem cleanup
+  when: gem_installed.rc == 0
+  changed_when: false
+
+- name: Check for conda
+  ansible.builtin.command: which conda
+  register: conda_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: Cleanup any condas
+  ansible.builtin.command: conda clean --all --yes
+  when: conda_installed.rc == 0
+  changed_when: false
+
+- name: Check for npm
+  ansible.builtin.command: which npm
+  register: npm_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: Cleanup npm cache
+  ansible.builtin.command: npm cache clean --force
+  when: npm_installed.rc == 0
+  changed_when: false
+
+- name: Check for yarn
+  ansible.builtin.command: which yarn
+  register: yarn_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: Cleanup yarn cache
+  ansible.builtin.command: yarn cache clean
+  when: yarn_installed.rc == 0
+  changed_when: false
