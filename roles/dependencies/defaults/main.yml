@@ -1,6 +1,7 @@
 ---
 dependencies_list:
   - fzf
+  - gh
   - git
   - jq
   - ripgrep

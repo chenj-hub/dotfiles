@@ -9,3 +9,6 @@
       tags: deps
     - role: maintenance
       tags: maintenance
+    - role: work
+      tags: work
+      when: work is defined

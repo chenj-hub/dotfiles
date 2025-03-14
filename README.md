@@ -2,20 +2,32 @@
 
 ## Run ansible locally
 
+Setup home machines
+```bash
+$ ./ansible_wrapper.sh ansible-playbook dotfiles.yml --ask-become-pass
 ```
-./ansible_wrapper.sh ansible-playbook dotfiles.yml --ask-become-pass
+
+Setup work machines
+```bash
+$ ./ansible_wrapper.sh ansible-playbook dotfiles.yml --ask-become-pass --extra-vars="work=true"
 ```
 
 ## Development
 
+Check playbook
+
+```bash
+$ ./ansible_wrapper.sh ansible-playbook dotfiles.yml --check --ask-become-pass
+```
+
 Use ansible-lint for styling
 
-```
-./ansible_wrapper.sh ansible-lint autofix
+```bash
+$ ./ansible_wrapper.sh ansible-lint autofix
 ```
 
 Update requirements.txt
 
-```
-uv pip freeze > requirements.txt 
+```bash
+$ uv pip freeze > requirements.txt 
 ```

@@ -1,0 +1,7 @@
+---
+work_list:
+  - awscli
+  - cursor
+  - hashicorp/tap/packer
+  - mist-cli
+  - shellcheck

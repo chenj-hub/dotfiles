@@ -1,0 +1,13 @@
+---
+- name: Template a file
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/.bazelrc"
+    dest: "{{ ansible_env.HOME }}/.bazelrc"
+    owner: "{{ ansible_env.USER }}"
+    mode: "0644"
+
+- name: Install dependencies
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ work_list }}"
