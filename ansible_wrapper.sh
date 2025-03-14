@@ -23,7 +23,11 @@ DOT_ANSIBLE_VENV=$HOME/.dot_ansible_venv
 if  python3 -V | grep -q $PYTHON_VERSION; then
   echo "Python $PYTHON_VERSION is already installed"
 else
-  uv python install $PYTHON_VERSION
+  if [[ $OSTYPE == darwin* ]]; then
+    brew install python@$PYTHON_VERSION
+  else
+    uv python install $PYTHON_VERSION
+  fi
 fi
 
 if [[ ! -d $DOT_ANSIBLE_VENV ]]; then
