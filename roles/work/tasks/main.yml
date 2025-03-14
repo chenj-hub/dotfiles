@@ -6,6 +6,13 @@
     owner: "{{ ansible_env.USER }}"
     mode: "0644"
 
+- name: Copy a file
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/debug.logging.properties"
+    dest: "{{ ansible_env.HOME }}/debug.logging.properties"
+    owner: "{{ ansible_env.USER }}"
+    mode: "0644"
+
 - name: Tap a Homebrew repository, state present
   community.general.homebrew_tap:
     name: "{{ item }}"
