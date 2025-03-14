@@ -11,30 +11,34 @@ if ! command -v uv &> /dev/null; then
     brew install uv
   else
     curl -LsSf https://astral.sh/uv/install.sh | sh
+    source "$HOME/.local/bin/env"
   fi
-  source $HOME/.local/bin/env
 else
   echo "uv is already installed"
 fi
 
-PYTHON_VERSION=3.12.3
+PYTHON_VERSION=3.12
 DOT_ANSIBLE_VENV=$HOME/.dot_ansible_venv
 
-if  python3 -V | grep -q $PYTHON_VERSION; then
+if  command -v python$PYTHON_VERSION &> /dev/null; then
   echo "Python $PYTHON_VERSION is already installed"
 else
   if [[ $OSTYPE == darwin* ]]; then
-    brew install python@$PYTHON_VERSION
+    brew install "python@$PYTHON_VERSION"
   else
-    uv python install $PYTHON_VERSION
+    uv python install "$PYTHON_VERSION"
   fi
 fi
 
 if [[ ! -d $DOT_ANSIBLE_VENV ]]; then
-  uv venv $DOT_ANSIBLE_VENV --python $PYTHON_VERSION
+  if [[ $OSTYPE == darwin* ]]; then
+    uv venv --python "$(brew --prefix)/bin/python@$PYTHON_VERSION" "$DOT_ANSIBLE_VENV"
+  else
+    uv venv --python "$PYTHON_VERSION" "$DOT_ANSIBLE_VENV"
+  fi
 fi
 
-source $DOT_ANSIBLE_VENV/bin/activate
+source "$DOT_ANSIBLE_VENV/bin/activate"
 uv pip install -r requirements.txt
 
 "$@"
