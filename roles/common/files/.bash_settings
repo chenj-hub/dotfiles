@@ -56,7 +56,7 @@ alias gd="git diff"
 
 # folder management
 alias ls="ls --color=auto"
-alias ll="ls -lh"
+alias ll="ls -alF"
 alias la="ls -lA"
 alias ..="up 1"
 alias ...="up 2"
