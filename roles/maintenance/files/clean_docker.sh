@@ -10,8 +10,8 @@ fi
 
 if type "docker" &> /dev/null; then
      echo 'Cleanup docker images...'
-     docker rmi $(docker images -q)
+     docker rmi "$(docker images -q)"
      echo 'Cleanup stopped containers with...'
-     docker rm $(docker container ls -a -q)
+     docker rm "$(docker container ls -a -q)"
 fi
 
