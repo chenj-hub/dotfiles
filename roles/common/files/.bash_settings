@@ -32,10 +32,11 @@ set completion-ignore-case on
 # = aliases                                                                    =
 # ==============================================================================
 
-# mv, rm, cp
+# verbose mv, rm, cp, mkdir
 alias mv='mv -v'
 alias rm='rm -v'
 alias cp='cp -v'
+alias mkdir="mkdir -pv"
 
 # make vim-like
 alias :q="exit"
@@ -57,9 +58,8 @@ alias gd="git diff"
 alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias la="ls -lA"
-alias mkdir="mkdir -pv"
-alias ..="cd .."
-alias ...="cd ../../"
+alias ..="up 1"
+alias ...="up 2"
 
 # grep
 alias grep="grep --color=auto"
@@ -70,30 +70,12 @@ alias grep="grep --color=auto"
 
 # Always list directory contents upon 'cd'
 function cd() {
-  builtin cd "$@"; ls -lh; 
-}               
+  builtin cd "$@" || exit; ls -lh; 
+}
 
 # What do?
 function help() {
-      curl cht.sh/$1
-}
-
-# Create and enter a directory
-function mkcd { 
- mkdir "$1"; 
- cd "$1"; 
-}
-
-# With this function you can explore the filsystem,
-# and display contents of both directories and files
-# without going to the beginning of the line to
-# switch between ls and less.
-function l() {
-    if [ -z "$2" -a -f "$1" ];then
-        less "$1"
-    else
-        ls -l --color=auto "$@"
-    fi
+      curl "cht.sh/$1"
 }
 
 # Optional number of levels to cd ../
@@ -108,81 +90,31 @@ function up() {
   if [ -z "$d" ]; then
     d=..
   fi
-  cd $d
+  cd "$d" || exit
 }
 
 # ARCHIVE EXTRACTION
 # usage: ex <file>
 function ex () {
-  if [ -f $1 ] ; then
+  if [ -f "$1" ] ; then
     case $1 in
-      *.tar.bz2)    tar xjf $1    ;;
-      *.tar.gz)     tar xzf $1    ;;
-      *.tar.xz)     tar xf $1     ;;
-      *.tar)        tar xf $1     ;;
-      *.tar.zst)    uzstd $1      ;;
-      *.bz2)        bunzip2 $1    ;;
-      *.rar)        unrar x $1    ;;
-      *.gz)         gunzip $1     ;;
-      *.tbz2)       tar xjf $1    ;;
-      *.tgz)        tar xzf $1    ;;
-      *.zip)        unzip $1      ;;
-      *.Z)          uncompress $1 ;;
-      *.7z)         7z x $1       ;;
-      *.deb)        ar x $1       ;;
+      *.tar.bz2)    tar xjf "$1"    ;;
+      *.tar.gz)     tar xzf "$1"    ;;
+      *.tar.xz)     tar xf "$1"     ;;
+      *.tar)        tar xf "$1"     ;;
+      *.tar.zst)    uzstd "$1"      ;;
+      *.bz2)        bunzip2 "$1"    ;;
+      *.rar)        unrar x "$1"    ;;
+      *.gz)         gunzip "$1"     ;;
+      *.tbz2)       tar xjf "$1"    ;;
+      *.tgz)        tar xzf "$1"    ;;
+      *.zip)        unzip "$1"      ;;
+      *.Z)          uncompress "$1" ;;
+      *.7z)         7z x "$1"       ;;
+      *.deb)        ar x "$1"       ;;
       *)    echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
     echo "'$1' is not a valid file"
   fi
 }
-
-# Always display error code unless it's 0
-function prompt_show_ec () {
- # Catch exit code
- ec=$?
- # Display exit code in red text unless zero
- if [ $ec -ne 0 ];then
-  echo -e "\033[31;1m[$ec]\033[0m"
- fi
-}
-
-# display the elapsed and finish times of all commands > 10s
-timer_file=`mktemp -t bash-timer.$$.XXXXXXXXXX`
-function begin_timer () {
-    date +%s%3N > $timer_file
-}
-
-function end_timer () {
-    local begin=$(cat $timer_file)
-    if [ -n "$begin" ]; then
-        local end=$(date +%s%3N)
-        local elapsed=$[$end-$begin]
-        if [ "$elapsed" -ge 10000 ]; then
-            local ms=$[$elapsed%1000]
-            local s=$[($elapsed/1000)%60]
-            local min=$[($elapsed/60000)%60]
-            local h=$[$elapsed/3600000]
-            printf '\e[35m%i:%0.2i:%0.2i\e[2m.%0.3i %s\e[0m\n' $h $min $s $ms "`date -d @$[$end/1000] '+%F %k:%M:%S'`"
-        fi
-    fi
-    echo > $timer_file
-}
-
-function before_exit () {
-    rm $timer_file
-}
-
-# ==============================================================================
-# = prompt                                                                     =
-# ==============================================================================
-
-PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-PROMPT_COMMAND="prompt_show_ec; $PROMPT_COMMAND"
-
-PS0="$PS0\$(begin_timer)"
-
-PROMPT_COMMAND="$PROMPT_COMMAND end_timer;"
-
-trap before_exit EXIT
