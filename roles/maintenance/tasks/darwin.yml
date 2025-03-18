@@ -53,12 +53,6 @@
     group: wheel
   register: maintenance_script
 
-- name: Run maintenance script
-  become: true
-  ansible.builtin.command: "{{ maintenance_script_path }}"
-  changed_when: false
-  register: maintenance_script_output
-
 - name: Create maintenance launchDaemon
   become: true
   ansible.builtin.template:

@@ -5,6 +5,7 @@ work_tap_list:
 
 work_list:
   - apparency
+  - aria2
   - awscli
   - cursor
   - hashicorp/tap/packer
