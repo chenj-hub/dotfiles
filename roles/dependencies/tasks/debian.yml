@@ -27,6 +27,7 @@
 
 - name: Check if starship is installed
   ansible.builtin.command: which starship
+  ignore_errors: true
   changed_when: false
   register: starship_installed
 
