@@ -1,12 +1,14 @@
 ---
 work_tap_list:
   - hashicorp/tap
+  - cirruslabs/cli
   - xcodesorg/made
 
 work_list:
   - apparency
   - aria2
   - awscli
+  - cirruslabs/cli/tart
   - cursor
   - hashicorp/tap/packer
   - mist-cli
