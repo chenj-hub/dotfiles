@@ -168,7 +168,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
 
 " Copilot
-Plug 'github/copilot.vim', { 'do': { -> copilot#setup() } }
+Plug 'github/copilot.vim'
 
 " Fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
