@@ -11,6 +11,7 @@ work_list:
   - cirruslabs/cli/tart
   - cursor
   - hashicorp/tap/packer
+  - hyperfine
   - mist-cli
   - shellcheck
   - suspicious-package
