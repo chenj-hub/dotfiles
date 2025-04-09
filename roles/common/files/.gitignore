@@ -12,3 +12,5 @@ node_modules
 appbuilder*
 empty.zip
 settings.json
+.ruby-version
+.ruby-gemset
