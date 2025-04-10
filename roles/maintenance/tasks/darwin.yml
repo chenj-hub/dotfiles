@@ -24,6 +24,8 @@
     owner: root
     group: wheel
   register: maintenance_script
+  notify:
+    - Kickstart maintenance LaunchDaemon
 
 - name: Create maintenance launchDaemon
   become: true
@@ -34,12 +36,5 @@
     group: wheel
     mode: "0644"
   register: maintenance_launch_daemon
-
-- name: Kickstart maintenance LaunchDaemon
-  become: true
-  changed_when: false
-  ansible.builtin.shell: |
-    set -o pipefail
-    launchctl unload -w /Library/LaunchDaemons/{{ maintenance_service }}.plist || true
-    launchctl load -w /Library/LaunchDaemons/{{ maintenance_service }}.plist || true
-  when: maintenance_launch_daemon.changed or maintenance_script.changed
+  notify:
+    - Kickstart maintenance LaunchDaemon

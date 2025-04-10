@@ -27,6 +27,8 @@
 - name: Clean up Bazel cache
   ansible.builtin.blockinfile:
     path: "{{ maintenance_script_path }}"
-    marker: "# { mark } Remove Bazel cache"
+    marker: "# {mark} Remove Bazel cache"
     block: |
       rm -rf "/private/var/tmp/_bazel_$USER"
+  notify:
+    - Kickstart maintenance LaunchDaemon

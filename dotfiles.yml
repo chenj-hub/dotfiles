@@ -12,3 +12,12 @@
     - role: work
       tags: work
       when: work is defined
+
+  handlers:
+    - name: Kickstart maintenance LaunchDaemon
+      become: true
+      changed_when: false
+      ansible.builtin.shell: |
+        set -o pipefail
+        launchctl unload -w /Library/LaunchDaemons/{{ maintenance_service }}.plist || true
+        launchctl load -w /Library/LaunchDaemons/{{ maintenance_service }}.plist || true
