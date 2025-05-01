@@ -198,7 +198,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 nnoremap <C-p> :GFiles<Cr>
 
 " Word search through project
-nnoremap <C-g> :Ag<Cr>
+nnoremap <C-g> :Rg<Cr>
 
 " Search buffers
 nnoremap <silent><leader>l :Buffers<CR>

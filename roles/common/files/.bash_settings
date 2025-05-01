@@ -5,6 +5,11 @@
 # ==============================================================================
 
 set -o emacs
+if [[ $(nvim --version) ]]; then
+  alias vim="nvim"
+  alias vi="nvim"
+fi
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 

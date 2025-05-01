@@ -18,6 +18,7 @@
     - hiddenbar
     - karabiner-elements
     - logi-options+
+    - reattach-to-user-namespace
     - rectangle
     - starship
     - stats

@@ -3,10 +3,10 @@
   hosts: localhost
   connection: local
   roles:
-    - role: common
-      tags: common
     - role: dependencies
       tags: deps
+    - role: common
+      tags: common
     - role: maintenance
       tags: clean
     - role: work

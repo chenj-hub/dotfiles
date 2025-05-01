@@ -4,7 +4,7 @@ dependencies_list:
   - gh
   - git
   - jq
+  - neovim
   - ripgrep
   - shellcheck
   - tmux
-  - vim

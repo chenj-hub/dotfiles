@@ -3,7 +3,7 @@
   branch = true
   status = true
 [core]
-  editor = vim
+  editor = nvim
   autocrlf = input
   pager = less -FMRiX
 [commit]
@@ -33,12 +33,9 @@
   added = yellow
   changed = green
   untracked = cyan
-[mergetool "vimdiff3"]
-  cmd = vim -u ~/.vimrc -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [diff]
   colorMoved = zebra
   algorithm = patience
-  tool = vimdiff
 [alias]
   db = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
   au = add -u
@@ -61,7 +58,6 @@
   tree = log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
   branch-recent = for-each-ref --sort=committerdate refs/heads/ --format=%(committerdate) %(refname:short)
 [merge]
-  tool = vimdiff
   ff = only
 [push]
   default = simple
@@ -70,7 +66,5 @@
   fsckobjects = true
 [status]
   showuntrackedfiles = no
-[difftool]
-  prompt = false
 [include]
   path = ~/Development/.gitconfig.local
