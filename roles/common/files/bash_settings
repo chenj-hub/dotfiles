@@ -75,7 +75,7 @@ alias grep="grep --color=auto"
 
 # Always list directory contents upon 'cd'
 function cd() {
-  builtin cd "$@" || exit; ls -lh; 
+  builtin cd "$@" || exit; ls -lh;
 }
 
 # What do?

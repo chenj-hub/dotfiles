@@ -1,4 +1,12 @@
 ---
+- name: Add additional stable repository from PPA and install its signing key on Ubuntu target
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  become: true
+  with_items:
+    - ppa:neovim-ppa/stable
+    - ppa:neovim-ppa/unstable
+
 - name: Update apt cache
   ansible.builtin.apt:
     update_cache: true
@@ -24,6 +32,7 @@
   with_items:
     - linux-headers-generic
     - build-essential
+    - xclip
 
 - name: Check if starship is installed
   ansible.builtin.command: which starship
