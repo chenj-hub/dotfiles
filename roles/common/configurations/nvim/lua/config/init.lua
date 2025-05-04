@@ -13,28 +13,28 @@ function M.setup()
   vim.api.nvim_set_hl(0, "Comment", { ctermfg = "green" })
 
   -- Indentation
-  vim.o.shiftwidth = 2
-  vim.o.tabstop = 2
-  vim.o.expandtab = true
+  vim.opt.shiftwidth = 2
+  vim.opt.tabstop = 2
+  vim.opt.expandtab = true
 
   -- General editor settings
-  vim.o.hlsearch = true
-  vim.o.number = true
-  vim.o.ruler = true
-  vim.o.lazyredraw = true
-  vim.o.smartcase = true
-  vim.o.clipboard = "unnamedplus"
+  vim.opt.hlsearch = true
+  vim.opt.number = true
+  vim.opt.ruler = true
+  vim.opt.lazyredraw = true
+  vim.opt.smartcase = true
+  vim.opt.clipboard = "unnamedplus"
   vim.wo.colorcolumn = "80"
-  vim.o.conceallevel = 1
+  vim.opt.conceallevel = 1
 
-  vim.o.background = "dark"
+  vim.opt.background = "dark"
 
   -- Auto indent settings
-  vim.o.autoindent = true
+  vim.opt.autoindent = true
 
   -- keymaps
   -- Enable 24-bit RGB colors
-  vim.o.termguicolors = true
+  vim.opt.termguicolors = true
 
   -- Persistent undo setup
   if vim.fn.has('persistent_undo') == 1 then
@@ -45,9 +45,9 @@ function M.setup()
     end
 
     -- Set the undodir and undo-related settings
-    vim.o.undodir = undodir
-    vim.o.undolevels = 5000
-    vim.o.undofile = true
+    vim.opt.undodir = undodir
+    vim.opt.undolevels = 5000
+    vim.opt.undofile = true
   end
 end
 

@@ -39,7 +39,7 @@
     dest: "{{ ansible_env.HOME }}/.config/"
     owner: "{{ ansible_env.USER }}"
     mode: "0755"
-    follow: yes
-  when: '"{{ item.name }}" in dependencies_list'
+    follow: true
+  when: item.name in dependencies_list
   loop:
     - { name: "neovim", config: "nvim" }

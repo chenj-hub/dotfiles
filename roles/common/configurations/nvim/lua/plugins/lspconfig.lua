@@ -9,7 +9,7 @@ return {
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "lua_ls", "gopls", "pylsp", "terraformls" }
+      ensure_installed = { "ansiblels", "bashls", "lua_ls", "gopls", "pylsp", "terraformls" }
     })
 
     local on_attach = function(_, _)
@@ -21,6 +21,14 @@ return {
     end
 
     local lspconf = require("lspconfig")
+
+    lspconf.ansiblels.setup {
+      on_attach = on_attach
+    }
+
+    lspconf.bashls.setup {
+      on_attach = on_attach
+    }
 
     lspconf.lua_ls.setup {
       on_attach = on_attach
@@ -41,6 +49,5 @@ return {
     lspconf.ruby_lsp.setup {
       on_attach = on_attach
     }
-
   end
 }
