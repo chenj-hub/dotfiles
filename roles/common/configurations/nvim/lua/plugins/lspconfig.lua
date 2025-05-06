@@ -13,11 +13,11 @@ return {
     })
 
     local on_attach = function(_, _)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-      vim.keymap.set('n', 'gf', vim.lsp.buf.format, {})
-      vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, {})
-      vim.keymap.set('n', 'gh', vim.lsp.buf.hover, {})
+      vim.keymap.set('n', 'md', vim.lsp.buf.definition, {})
+      vim.keymap.set('n', 'mi', vim.lsp.buf.implementation, {})
+      vim.keymap.set('n', 'mf', vim.lsp.buf.format, {})
+      vim.keymap.set('n', 'mr', require('telescope.builtin').lsp_references, {})
+      vim.keymap.set('n', 'mh', vim.lsp.buf.hover, {})
     end
 
     local lspconf = require("lspconfig")
