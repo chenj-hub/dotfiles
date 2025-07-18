@@ -44,26 +44,36 @@
       [include]
         path = ~/Development/.gitconfig
 
+- name: Create rc files if missing
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: touch
+    owner: "{{ ansible_env.USER }}"
+    mode: "0644"
+  loop:
+    - ".zshrc"
+    - ".bashrc"
+
 - name: Import shell settings
   ansible.builtin.lineinfile:
-    dest: "{{ item.rc_file }}"
-    line: "source {{ item.setting }}"
+    dest: "{{ ansible_env.HOME }}/{{ item.rc_file }}"
+    line: "source {{ ansible_env.HOME }}/{{ item.setting }}"
     state: present
   loop:
-    - { rc_file: "{{ ansible_env.HOME }}/.zshrc", setting: "{{ ansible_env.HOME }}/.zsh_settings" }
-    - { rc_file: "{{ ansible_env.HOME }}/.bashrc", setting: "{{ ansible_env.HOME }}/.bash_settings" }
+    - { rc_file: ".zshrc", setting: ".zsh_settings" }
+    - { rc_file: ".bashrc", setting: ".bash_settings" }
 
 - name: Use starship in shells if available
   ansible.builtin.blockinfile:
-    path: "{{ item.rc_file }}"
+    path: "{{ ansible_env.HOME }}/{{ item.rc_file }}"
     marker: "# {mark} Starship prompt for {{ item.shell }}"
     block: |
       if command -v starship; then
         eval "$(starship init {{ item.shell }})"
       fi
   loop:
-    - { shell: "zsh", rc_file: "{{ ansible_env.HOME }}/.zshrc" }
-    - { shell: "bash", rc_file: "{{ ansible_env.HOME }}/.bashrc" }
+    - { shell: "zsh", rc_file: ".zshrc" }
+    - { shell: "bash", rc_file: ".bashrc" }
 
 - name: Configure for common use
   ansible.builtin.copy:

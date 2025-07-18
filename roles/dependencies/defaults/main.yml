@@ -3,6 +3,7 @@ dependencies_list:
   - fzf
   - gh
   - git
+  - go
   - jq
   - neovim
   - ripgrep

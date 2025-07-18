@@ -24,15 +24,6 @@
     state: present
   loop: "{{ work_list }}"
 
-- name: Clean up Bazel cache
-  ansible.builtin.blockinfile:
-    path: "{{ maintenance_script_path }}"
-    marker: "# {mark} Remove Bazel cache"
-    block: |
-      rm -rf "/private/var/tmp/_bazel_$USER"
-  notify:
-    - Kickstart maintenance LaunchDaemon
-
 - name: Configure for work use
   ansible.builtin.copy:
     src: "{{ role_path }}/configurations/{{ item.config }}"
@@ -43,3 +34,13 @@
   when: item.name in dependencies_list
   loop:
     - { name: "neovim", config: "nvim" }
+
+- name: Clean up Bazel cache
+  ansible.builtin.blockinfile:
+    path: "{{ maintenance_script_path }}"
+    marker: "# {mark} Remove Bazel cache"
+    block: |
+      rm -rf "/private/var/tmp/_bazel_$USER"
+  become: true
+  notify:
+    - Kickstart maintenance LaunchDaemon
