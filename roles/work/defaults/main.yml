@@ -15,4 +15,5 @@ work_list:
   - mist-cli
   - shellcheck
   - suspicious-package
+  - terraform
   - xcodesorg/made/xcodes
