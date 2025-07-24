@@ -47,6 +47,7 @@
   last = log -1 HEAD
   lol = log --graph --decorate --oneline
   lola = log --graph --decorate --oneline --all
+  me = "!f(){ git cob $(whoami)/$(date +%s)-$1; }; f"
   prune = fetch --prune
   pu = push origin HEAD
   ru = reset --hard @{upstream}

@@ -17,3 +17,4 @@ work_list:
   - suspicious-package
   - terraform
   - xcodesorg/made/xcodes
+  - yq
