@@ -8,8 +8,11 @@ return {
   },
   config = function()
     require("mason").setup()
+
+    local servers = { "ansiblels", "bashls", "lua_ls", "gopls", "pylsp", "ruby_lsp", "terraformls" }
+
     require("mason-lspconfig").setup({
-      ensure_installed = { "ansiblels", "bashls", "lua_ls", "gopls", "pylsp", "ruby_lsp", "terraformls" }
+      ensure_installed = servers,
     })
 
     local on_attach = function(_, _)
@@ -20,34 +23,10 @@ return {
       vim.keymap.set('n', 'mh', vim.lsp.buf.hover, {})
     end
 
-    local lspconf = require("lspconfig")
-
-    lspconf.ansiblels.setup {
-      on_attach = on_attach
-    }
-
-    lspconf.bashls.setup {
-      on_attach = on_attach
-    }
-
-    lspconf.lua_ls.setup {
-      on_attach = on_attach
-    }
-
-    lspconf.gopls.setup {
-      on_attach = on_attach
-    }
-
-    lspconf.pylsp.setup {
-      on_attach = on_attach
-    }
-
-    lspconf.ruby_lsp.setup {
-      on_attach = on_attach
-    }
-
-    lspconf.terraformls.setup {
-      on_attach = on_attach
-    }
+    for _, name in ipairs(servers) do
+      vim.lsp.config(name, { on_attach = on_attach })
+      vim.lsp.enable(name)
+    end
   end
 }
+
