@@ -19,7 +19,7 @@ return {
     },
   },
   config = function()
-    require('neo-tree').setup()
+    require('neo-tree').setup({})
     vim.keymap.set('n', '<leader>t', '<cmd>Neotree toggle<CR>', { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>r', '<cmd>Neotree current reveal_force_cwd<CR>', { noremap = true, silent = true })
   end
