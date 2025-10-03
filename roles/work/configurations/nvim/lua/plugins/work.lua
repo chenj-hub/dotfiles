@@ -1,7 +1,6 @@
 return {
   {
     'azorng/goose.nvim',
-    branch = 'main',
     config = function()
       require('goose').setup({})
     end,
