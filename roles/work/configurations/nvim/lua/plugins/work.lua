@@ -1,9 +1,9 @@
 return {
   {
-    'azorng/goose.nvim',
-    branch = 'main',
+    'greggh/claude-code.nvim',
     config = function()
-      require('goose').setup({})
+      require('claude-code').setup({})
+      vim.keymap.set('n', '<leader>cc', '<cmd>ClaudeCode<CR>', { desc = 'Toggle Claude Code' })
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
