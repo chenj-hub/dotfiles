@@ -22,10 +22,10 @@ return {
         api_key_cmd = "security find-generic-password -a OpenAI -s ChatGPT -w",
       })
 
-      vim.keymap.set("n", "<leader>gp", "<cmd>ChatGPT<CR>")
-      vim.keymap.set({ 'n', 'v' }, '<leader>gs', '<cmd>ChatGPTRun summarize<CR>')
-      vim.keymap.set({ 'n', 'v' }, "<leader>ge", "<cmd>ChatGPTRun explain_code<CR>")
-      vim.keymap.set({ 'n', 'v' }, "<leader>gc", "<cmd>ChatGPTRun grammar_correction<CR>")
+      vim.keymap.set("n", "<leader>cg", "<cmd>ChatGPT<CR>")
+      vim.keymap.set({ 'n', 'v' }, '<leader>cgs', '<cmd>ChatGPTRun summarize<CR>')
+      vim.keymap.set({ 'n', 'v' }, "<leader>cge", "<cmd>ChatGPTRun explain_code<CR>")
+      vim.keymap.set({ 'n', 'v' }, "<leader>cgg", "<cmd>ChatGPTRun grammar_correction<CR>")
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -78,6 +78,7 @@ return {
           end, { 'i', 's' }),
         }),
         sources = cmp.config.sources({
+          { name = 'copilot' },
           { name = 'minuet' },
           { name = 'nvim_lsp' },
           { name = 'buffer' },
@@ -87,20 +88,57 @@ return {
     end,
   },
   {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    dependencies = {
+      'copilotlsp-nvim/copilot-lsp',
+    },
+    config = function()
+      require('copilot').setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        nes = {
+          enabled = true,
+          keymap = {
+            accept_and_goto = "<leader>p",
+            accept = false,
+            dismiss = "<Esc>"
+          }
+        }
+      })
+    end,
+  },
+  {
+    'zbirenbaum/copilot-cmp',
+    dependencies = {
+      'copilot.lua',
+    },
+    config = function()
+      require('copilot_cmp').setup()
+    end,
+  },
+  {
     'milanglacier/minuet-ai.nvim',
     dependencies = {
       'nvim-cmp',
     },
     config = function()
       require('minuet').setup({
-        provider = 'claude',
+        provider = 'gemini',
         provider_options = {
-          claude = {
-            model = 'claude-sonnet-4-5-20250929',
+          openai = {
+            model = 'gpt-5',
             api_key = function ()
-              return vim.fn.system("security find-generic-password -a Anthropic -s Claude -w"):gsub("\n", "")
+              return vim.fn.system("security find-generic-password -a OpenAI -s ChatGPT -w"):gsub("\n", "")
             end,
           },
+          gemini = {
+            model = 'gemini-2.5-flash',
+            api_key = function ()
+              return vim.fn.system("security find-generic-password -a Google -s Gemini -w"):gsub("\n", "")
+            end,
+          }
         },
       })
     end,
