@@ -1,4 +1,4 @@
-# dotfiles setup 
+# dotfiles setup
 
 ## Run ansible locally
 
@@ -29,5 +29,5 @@ $ ./ansible_wrapper.sh ansible-lint --fix
 Update requirements.txt
 
 ```bash
-$ uv pip freeze > requirements.txt 
+$ uv pip freeze > requirements.txt
 ```

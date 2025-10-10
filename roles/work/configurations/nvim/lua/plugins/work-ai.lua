@@ -1,20 +1,5 @@
 return {
   {
-    "azorng/goose.nvim",
-    config = function()
-      require("goose").setup({})
-    end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          anti_conceal = { enabled = false },
-        },
-      }
-    },
-  },
-  {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
@@ -57,6 +42,7 @@ return {
       local cmp = require('cmp')
       cmp.setup({
         mapping = cmp.mapping.preset.insert({
+          ["<C-\\>"] = require('minuet').make_cmp_map(),
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
@@ -77,6 +63,7 @@ return {
             end
           end, { 'i', 's' }),
         }),
+        performance = { fetching_timeout = 2000 },
         sources = cmp.config.sources({
           { name = 'copilot' },
           { name = 'minuet' },
@@ -126,18 +113,31 @@ return {
     config = function()
       require('minuet').setup({
         provider = 'gemini',
+        request_timeout = 120,
         provider_options = {
           openai = {
             model = 'gpt-5',
-            api_key = function ()
+            api_key = function()
               return vim.fn.system("security find-generic-password -a OpenAI -s ChatGPT -w"):gsub("\n", "")
             end,
           },
           gemini = {
             model = 'gemini-2.5-flash',
-            api_key = function ()
+            api_key = function()
               return vim.fn.system("security find-generic-password -a Google -s Gemini -w"):gsub("\n", "")
             end,
+          },
+          openai_compatible = {
+            model = 'goose-claude-3-7-sonnet',
+            end_point = 'https://block-lakehouse-production.cloud.databricks.com/serving-endpoints/chat/completions',
+            api_key = function()
+              return vim.fn.system("security find-generic-password -a Databrick -s API -w"):gsub("\n", "")
+            end,
+            name = 'Databricks',
+            stream = true,
+            optional = {
+              max_tokens = 256
+            },
           }
         },
       })
