@@ -20,15 +20,19 @@ return {
     }
   },
   {
-    "greggh/claude-code.nvim",
+    "azorng/goose.nvim",
+    config = function()
+      require("goose").setup({})
+    end,
     dependencies = {
       "nvim-lua/plenary.nvim",
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          anti_conceal = { enabled = false },
+        },
+      }
     },
-    config = function()
-      require("claude-code").setup()
-
-      vim.keymap.set('n', '<leader>cc', '<cmd>ClaudeCode<CR>', { desc = 'Toggle Claude Code' })
-    end
   },
   {
     'hrsh7th/nvim-cmp',
@@ -112,7 +116,7 @@ return {
     },
     config = function()
       require('minuet').setup({
-        provider = 'gemini',
+        provider = 'openai_compatible',
         request_timeout = 120,
         provider_options = {
           openai = {

@@ -9,7 +9,6 @@ work_list:
   - aria2
   - awscli
   - cirruslabs/cli/tart
-  - claude-code
   - hashicorp/tap/packer
   - hyperfine
   - mist-cli
