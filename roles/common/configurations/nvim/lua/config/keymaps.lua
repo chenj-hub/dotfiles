@@ -28,13 +28,6 @@ function M.setup()
   vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
   vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-  -- Open config files
-  vim.keymap.set('n', '<leader>c', function()
-    vim.cmd('cd ~/.config/nvim/')
-    vim.cmd('tabnew ~/.config/nvim/lua/config/keymaps.lua')
-    toggle_neotree()
-  end, { noremap = true, silent = true })
-
   -- Removes trailing spaces on save
   vim.api.nvim_create_autocmd("BufWritePre", {
     command = [[%s/\s\+$//e]],
