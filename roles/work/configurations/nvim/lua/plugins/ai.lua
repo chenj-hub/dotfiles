@@ -128,7 +128,7 @@ return {
             end,
           },
           openai_compatible = {
-            model = 'goose-claude-3-7-sonnet',
+            model = 'goose-claude-4-5-sonnet',
             end_point = 'https://block-lakehouse-production.cloud.databricks.com/serving-endpoints/chat/completions',
             api_key = function()
               return vim.fn.system("security find-generic-password -a Databrick -s API -w"):gsub("\n", "")
