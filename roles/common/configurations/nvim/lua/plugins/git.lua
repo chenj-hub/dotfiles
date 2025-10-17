@@ -3,8 +3,8 @@ return {
     'tpope/vim-fugitive',
     config = function()
       vim.keymap.set('n', '<leader>G', '<cmd>Git<CR>', { noremap = true, silent = true })
-      vim.keymap.set('n', '<leader>gc', '<cmd>Git commit<CR>', { noremap = true, silent = true })
-      vim.keymap.set('n', '<leader>gca', '<cmd>Git commit --amend<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>c', '<cmd>Git commit<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>ca', '<cmd>Git commit --amend<CR>', { noremap = true, silent = true })
       vim.keymap.set('n', '<leader>gh', '<cmd>GBrowse<CR>', { noremap = true, silent = true })
       vim.keymap.set('v', '<leader>gh', ":<C-u>'<,'>GBrowse<CR>", { noremap = true, silent = true })
       vim.keymap.set('n', '<leader>gl', '<cmd>Git log<CR>', { noremap = true, silent = true })
