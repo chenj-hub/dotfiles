@@ -7,10 +7,10 @@ return {
         api_key_cmd = "security find-generic-password -a OpenAI -s ChatGPT -w",
       })
 
-      vim.keymap.set("n", "<leader>cg", "<cmd>ChatGPT<CR>")
-      vim.keymap.set({ 'n', 'v' }, '<leader>cgs', '<cmd>ChatGPTRun summarize<CR>')
-      vim.keymap.set({ 'n', 'v' }, "<leader>cge", "<cmd>ChatGPTRun explain_code<CR>")
-      vim.keymap.set({ 'n', 'v' }, "<leader>cgg", "<cmd>ChatGPTRun grammar_correction<CR>")
+      vim.keymap.set("n", "<leader>gc", "<cmd>ChatGPT<CR>")
+      vim.keymap.set({ 'n', 'v' }, '<leader>gs', '<cmd>ChatGPTRun summarize<CR>')
+      vim.keymap.set({ 'n', 'v' }, "<leader>ge", "<cmd>ChatGPTRun explain_code<CR>")
+      vim.keymap.set({ 'n', 'v' }, "<leader>gg", "<cmd>ChatGPTRun grammar_correction<CR>")
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -20,19 +20,15 @@ return {
     }
   },
   {
-    "azorng/goose.nvim",
-    config = function()
-      require("goose").setup({})
-    end,
+    "greggh/claude-code.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          anti_conceal = { enabled = false },
-        },
-      }
     },
+    config = function()
+      require("claude-code").setup()
+
+      vim.keymap.set('n', '<leader>cc', '<cmd>ClaudeCode<CR>', { desc = 'Toggle Claude Code' })
+    end
   },
   {
     'hrsh7th/nvim-cmp',
