@@ -10,6 +10,7 @@ work_list:
   - awscli
   - cirruslabs/cli/tart
   - claude-code
+  - cursor
   - hashicorp/tap/packer
   - hyperfine
   - mist-cli
