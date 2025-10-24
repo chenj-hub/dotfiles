@@ -16,11 +16,11 @@ return {
     })
 
     local on_attach = function(_, _)
-      vim.keymap.set('n', 'md', vim.lsp.buf.definition, {})
-      vim.keymap.set('n', 'mi', vim.lsp.buf.implementation, {})
-      vim.keymap.set('n', 'mf', vim.lsp.buf.format, {})
-      vim.keymap.set('n', 'mr', require('telescope.builtin').lsp_references, {})
-      vim.keymap.set('n', 'mh', vim.lsp.buf.hover, {})
+      vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { desc = 'LSP definition' })
+      vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, { desc = 'LSP implementation' })
+      vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'LSP format' })
+      vim.keymap.set('n', '<leader>lr', require('telescope.builtin').lsp_references, { desc = 'LSP references' })
+      vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, { desc = 'LSP hover' })
     end
 
     for _, name in ipairs(servers) do

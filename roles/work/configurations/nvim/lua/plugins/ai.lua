@@ -7,10 +7,10 @@ return {
         api_key_cmd = "security find-generic-password -a OpenAI -s ChatGPT -w",
       })
 
-      vim.keymap.set("n", "<leader>gc", "<cmd>ChatGPT<CR>")
-      vim.keymap.set({ 'n', 'v' }, '<leader>gs', '<cmd>ChatGPTRun summarize<CR>')
-      vim.keymap.set({ 'n', 'v' }, "<leader>ge", "<cmd>ChatGPTRun explain_code<CR>")
-      vim.keymap.set({ 'n', 'v' }, "<leader>gg", "<cmd>ChatGPTRun grammar_correction<CR>")
+      vim.keymap.set('n', '<leader>cg', '<cmd>ChatGPT<CR>', { desc = 'ChatGPT' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>cs', '<cmd>ChatGPTRun summarize<CR>', { desc = 'ChatGPT summarize' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>ce', '<cmd>ChatGPTRun explain_code<CR>', { desc = 'ChatGPT explain' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>cG', '<cmd>ChatGPTRun grammar_correction<CR>', { desc = 'ChatGPT grammar' })
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -27,7 +27,7 @@ return {
     config = function()
       require("claude-code").setup()
 
-      vim.keymap.set('n', '<leader>cc', '<cmd>ClaudeCode<CR>', { desc = 'Toggle Claude Code' })
+      vim.keymap.set('n', '<leader>cc', '<cmd>ClaudeCode<CR>', { desc = 'Claude Code' })
     end
   },
   {
@@ -42,7 +42,7 @@ return {
       local cmp = require('cmp')
       cmp.setup({
         mapping = cmp.mapping.preset.insert({
-          ["<C-\\>"] = require('minuet').make_cmp_map(),
+          ['<C-y>'] = require('minuet').make_cmp_map(),
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
@@ -88,7 +88,7 @@ return {
         nes = {
           enabled = true,
           keymap = {
-            accept_and_goto = "<leader>p",
+            accept_and_goto = "<leader>ca",
             accept = false,
             dismiss = "<Esc>"
           }
@@ -112,8 +112,7 @@ return {
     },
     config = function()
       require('minuet').setup({
-        provider = 'openai_compatible',
-        request_timeout = 120,
+        provider = 'gemini',
         provider_options = {
           openai = {
             model = 'gpt-5',

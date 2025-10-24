@@ -12,9 +12,14 @@ return {
       },
     })
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-    vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>l', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    -- Primary find keymaps following <leader>f group
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find grep' })
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find help' })
+
+    -- Legacy keybinds for muscle memory
+    vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find files' })
+    vim.keymap.set('n', '<C-g>', builtin.live_grep, { desc = 'Live grep' })
   end
 }
