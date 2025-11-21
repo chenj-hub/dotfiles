@@ -13,6 +13,10 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+if [[ -f "$HOME/.shell_settings" ]]; then
+  source "$HOME/.shell_settings"
+fi
+
 # ==============================================================================
 # = history                                                                    =
 # ==============================================================================
