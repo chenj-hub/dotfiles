@@ -2,12 +2,12 @@ local M = {}
 
 
 function M.setup()
-  -- Enable necessary plugins and file type detection}
-  vim.cmd([[
-    filetype plugin indent on
-    set termguicolors
-    set encoding=utf-8
-  ]])
+  -- Enable necessary plugins and file type detection
+  vim.cmd("filetype plugin indent on")
+
+  -- Enable 24-bit RGB colors
+  vim.opt.termguicolors = true
+  vim.opt.encoding = "utf-8"
 
   -- Highlight comments in green
   vim.api.nvim_set_hl(0, "Comment", { ctermfg = "green" })
@@ -16,6 +16,7 @@ function M.setup()
   vim.opt.shiftwidth = 2
   vim.opt.tabstop = 2
   vim.opt.expandtab = true
+  vim.opt.autoindent = true
 
   -- General editor settings
   vim.opt.hlsearch = true
@@ -26,15 +27,7 @@ function M.setup()
   vim.opt.clipboard = "unnamedplus"
   vim.wo.colorcolumn = "80"
   vim.opt.conceallevel = 1
-
   vim.opt.background = "dark"
-
-  -- Auto indent settings
-  vim.opt.autoindent = true
-
-  -- keymaps
-  -- Enable 24-bit RGB colors
-  vim.opt.termguicolors = true
 
   -- Persistent undo setup
   if vim.fn.has('persistent_undo') == 1 then
