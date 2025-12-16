@@ -12,10 +12,10 @@ work_list:
   - claude-code
   - cursor
   - hashicorp/tap/packer
+  - hashicorp/tap/terraform
   - hyperfine
   - mist-cli
   - shellcheck
   - suspicious-package
-  - terraform
   - xcodesorg/made/xcodes
   - yq
