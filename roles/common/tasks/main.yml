@@ -12,6 +12,7 @@
     - gitmessage
     - ideavimrc
     - tmux.conf
+    - tmux.conf.local
     - vimrc
     - zsh_settings
 
