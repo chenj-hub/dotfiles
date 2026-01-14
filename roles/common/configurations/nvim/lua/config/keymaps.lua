@@ -25,10 +25,6 @@ function M.setup()
   vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Focus lower window' })
   vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Focus upper window' })
 
-  -- View PR (uses gh CLI, not plugin-specific)
-  vim.keymap.set('n', '<leader>gp', '<cmd>!gh pr view --web || gh pr create --web<CR>', { desc = 'Git PR view/create', noremap = true, silent = true })
-
-  -- ============================================================================
   -- Autocommands
   -- ============================================================================
 
