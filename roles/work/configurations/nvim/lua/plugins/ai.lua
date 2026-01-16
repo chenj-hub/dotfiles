@@ -1,5 +1,44 @@
 return {
   {
+    "azorng/goose.nvim",
+    config = function()
+      require("goose").setup({
+        keymap = {
+          global = {
+            toggle = '<leader>co',                 -- Open goose. Close if opened
+            open_input = '<leader>ci',             -- Opens and focuses on input window on insert mode
+            open_input_new_session = '<leader>cI', -- Opens and focuses on input window on insert mode. Creates a new session
+            open_output = '<leader>cO',            -- Opens and focuses on output window
+            toggle_focus = '<leader>ct',           -- Toggle focus between goose and last window
+            close = '<leader>cq',                  -- Close UI windows
+            toggle_fullscreen = '<leader>cf',      -- Toggle between normal and fullscreen mode
+            select_session = '<leader>css',        -- Select and load a goose session
+            goose_mode_chat = '<leader>cmc',       -- Set goose mode to `chat`. (Tool calling disabled. No editor context besides selections)
+            goose_mode_auto = '<leader>cma',       -- Set goose mode to `auto`. (Default mode with full agent capabilities)
+            configure_provider = '<leader>cp',     -- Quick provider and model switch from predefined list
+            open_config = '<leader>c.',            -- Open goose config file
+            inspect_session = '<leader>c?',        -- Inspect current session as JSON
+            diff_open = '<leader>cd',              -- Opens a diff tab of a modified file since the last goose prompt
+            diff_next = '<leader>c]',              -- Navigate to next file diff
+            diff_prev = '<leader>c[',              -- Navigate to previous file diff
+            diff_close = '<leader>cQ',             -- Close diff view tab and return to normal editing
+            diff_revert_all = '<leader>cra',       -- Revert all file changes since the last goose prompt
+            diff_revert_this = '<leader>crt',      -- Revert current file changes since the last goose prompt
+          }
+        }
+      })
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          anti_conceal = { enabled = false },
+        },
+      }
+    },
+  },
+  {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
