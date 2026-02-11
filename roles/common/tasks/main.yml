@@ -11,6 +11,7 @@
     - gitignore
     - gitmessage
     - ideavimrc
+    - shell_settings
     - tmux.conf
     - tmux.conf.local
     - vimrc

@@ -4,8 +4,9 @@
 # = general                                                                    =
 # ==============================================================================
 
-# Steal what I've done for bash
-source ~/.bash_settings
+if [[ -f "$HOME/.shell_settings" ]]; then
+  source "$HOME/.shell_settings"
+fi
 
 # enable emacs keybindings
 bindkey -e
@@ -18,6 +19,9 @@ fi
 # ==============================================================================
 # = history                                                                    =
 # ==============================================================================
+
+# Disable per-terminal-session command history
+export SHELL_SESSIONS_DISABLE=1
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS

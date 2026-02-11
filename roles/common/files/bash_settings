@@ -5,13 +5,6 @@
 # ==============================================================================
 
 set -o emacs
-if [[ $(nvim --version) ]]; then
-  alias vim="nvim"
-  alias vi="nvim"
-fi
-
-export VISUAL=vim
-export EDITOR="$VISUAL"
 
 if [[ -f "$HOME/.shell_settings" ]]; then
   source "$HOME/.shell_settings"
@@ -29,109 +22,6 @@ fi
 # Disable per-terminal-session command history
 SHELL_SESSION_HISTORY=0
 
-# Where it gets saved
-unset HISTFILE
-HISTFILE=~/.history
-
-# Remember about a years worth of history (AWESOME)
-SAVEHIST=10000
-HISTSIZE=10000
-HISTFILESIZE=-1
-
 # no duplicate entries
 HISTCONTROL=ignoredups:erasedups
 set completion-ignore-case on
-
-# ==============================================================================
-# = aliases                                                                    =
-# ==============================================================================
-
-# verbose mv, rm, cp, mkdir
-alias mv='mv -v'
-alias rm='rm -v'
-alias cp='cp -v'
-alias mkdir="mkdir -pv"
-
-# make vim-like
-alias :q="exit"
-alias :wq="exit"
-alias :x="exit"
-
-# kill processes
-alias kp="ps -ef | fzf"
-
-# git
-alias g="git"
-alias gi="git"
-alias get="git"
-alias got="git"
-alias gs="git status"
-alias gd="git diff"
-
-# folder management
-alias ls="ls --color=auto"
-alias ll="ls -alF"
-alias la="ls -lA"
-alias ..="up 1"
-alias ...="up 2"
-
-# grep
-alias grep="grep --color=auto"
-
-# ripgrep
-alias rg="rg --hidden --glob '!.git'"
-
-# ==============================================================================
-# = functions                                                                  =
-# ==============================================================================
-
-# Always list directory contents upon 'cd'
-function cd() {
-  builtin cd "$@" || exit; ls -lh;
-}
-
-# What do?
-function help() {
-      curl "cht.sh/$1"
-}
-
-# Optional number of levels to cd ../
-function up() {
-  local d=""
-  limit=$1
-  for ((i=1 ; i <= limit ; i++))
-    do
-      d=$d/..
-    done
-  d=$(echo $d | sed 's/^\///')
-  if [ -z "$d" ]; then
-    d=..
-  fi
-  cd "$d" || exit
-}
-
-# ARCHIVE EXTRACTION
-# usage: ex <file>
-function ex () {
-  if [ -f "$1" ] ; then
-    case $1 in
-      *.tar.bz2)    tar xjf "$1"    ;;
-      *.tar.gz)     tar xzf "$1"    ;;
-      *.tar.xz)     tar xf "$1"     ;;
-      *.tar)        tar xf "$1"     ;;
-      *.tar.zst)    uzstd "$1"      ;;
-      *.bz2)        bunzip2 "$1"    ;;
-      *.rar)        unrar x "$1"    ;;
-      *.gz)         gunzip "$1"     ;;
-      *.tbz2)       tar xjf "$1"    ;;
-      *.tgz)        tar xzf "$1"    ;;
-      *.zip)        unzip "$1"      ;;
-      *.Z)          uncompress "$1" ;;
-      *.7z)         7z x "$1"       ;;
-      *.deb)        ar x "$1"       ;;
-      *)    echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
