@@ -10,6 +10,11 @@ source ~/.bash_settings
 # enable emacs keybindings
 bindkey -e
 
+if [[ "$SHELL" == *"zsh"* ]]; then
+  # Set up fzf key bindings and fuzzy completion
+  source <(fzf --zsh)
+fi
+
 # ==============================================================================
 # = history                                                                    =
 # ==============================================================================
