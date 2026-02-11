@@ -14,3 +14,4 @@ empty.zip
 settings.json
 .ruby-version
 .ruby-gemset
+.claude/
