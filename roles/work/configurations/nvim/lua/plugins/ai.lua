@@ -101,16 +101,22 @@ return {
     },
     config = function()
       require('minuet').setup({
-        provider = 'gemini',
+        provider = 'claude',
         provider_options = {
           openai = {
-            model = 'gpt-5',
+            model = 'gpt-4o-mini',
             api_key = function()
               return vim.fn.system("security find-generic-password -a OpenAI -s ChatGPT -w"):gsub("\n", "")
             end,
           },
+          claude = {
+            model = 'claude-haiku-4-5',
+            api_key = function()
+              return vim.fn.system("security find-generic-password -a Anthropic -s Claude -w"):gsub("\n", "")
+            end,
+          },
           gemini = {
-            model = 'gemini-2.5-flash',
+            model = 'gemini-2.5-flash-lite',
             api_key = function()
               return vim.fn.system("security find-generic-password -a Google -s Gemini -w"):gsub("\n", "")
             end,
