@@ -18,7 +18,7 @@ else
   echo "uv is already installed"
 fi
 
-PYTHON_VERSION=3.12
+PYTHON_VERSION=3.13
 DOT_ANSIBLE_VENV="$HOME/.dot_ansible_venv"
 
 if  command -v python$PYTHON_VERSION &> /dev/null; then
