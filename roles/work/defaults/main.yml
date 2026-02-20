@@ -1,16 +1,18 @@
 ---
 work_tap_list:
-  - hashicorp/tap
   - cirruslabs/cli
+  - hashicorp/tap
   - xcodesorg/made
 
 work_list:
   - apparency
   - aria2
   - awscli
+  - claude
+  - codex
+  - cursor-cli
   - cirruslabs/cli/tart
-  - claude-code
-  - cursor
+  - gemini-cli
   - hashicorp/tap/packer
   - hashicorp/tap/terraform
   - hyperfine
