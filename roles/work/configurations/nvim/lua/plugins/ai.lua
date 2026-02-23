@@ -64,26 +64,23 @@ return {
     end,
   },
   {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    dependencies = {
-      'copilotlsp-nvim/copilot-lsp',
-    },
-    config = function()
-      require('copilot').setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-        nes = {
-          enabled = true,
-        }
-      })
-    end,
-  },
-  {
     'zbirenbaum/copilot-cmp',
     dependencies = {
-      'copilot.lua',
+      'zbirenbaum/copilot.lua',
+      cmd = 'Copilot',
+      event = 'InsertEnter',
+      dependencies = {
+        'copilotlsp-nvim/copilot-lsp',
+      },
+      config = function()
+        require('copilot').setup({
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+          nes = {
+            enabled = true,
+          }
+        })
+      end,
     },
     config = function()
       require('copilot_cmp').setup()
