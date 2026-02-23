@@ -4,10 +4,10 @@ return {
   opts = {
     spec = {
       -- Define group labels for better organization
+      { "<C-s>",     group = "AI/Completion" },
       { "<leader>f", group = "Find" },
       { "<leader>g", group = "Git" },
       { "<leader>t", group = "Tree/Toggle" },
-      { "<leader>c", group = "Code/AI" },
       { "<leader>l", group = "LSP" },
       { "<leader>d", group = "Diff/Diagnostics" },
     },

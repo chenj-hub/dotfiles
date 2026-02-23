@@ -7,10 +7,10 @@ return {
         api_key_cmd = "security find-generic-password -a OpenAI -s ChatGPT -w",
       })
 
-      vim.keymap.set('n', '<leader>cg', '<cmd>ChatGPT<CR>', { desc = 'ChatGPT' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>cs', '<cmd>ChatGPTRun summarize<CR>', { desc = 'ChatGPT summarize' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>ce', '<cmd>ChatGPTRun explain_code<CR>', { desc = 'ChatGPT explain' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>cG', '<cmd>ChatGPTRun grammar_correction<CR>', { desc = 'ChatGPT grammar' })
+      vim.keymap.set('n', '<C-s>g', '<cmd>ChatGPT<CR>', { desc = 'ChatGPT' })
+      vim.keymap.set({ 'n', 'v' }, '<C-s>u', '<cmd>ChatGPTRun summarize<CR>', { desc = 'ChatGPT summarize' })
+      vim.keymap.set({ 'n', 'v' }, '<C-s>x', '<cmd>ChatGPTRun explain_code<CR>', { desc = 'ChatGPT explain' })
+      vim.keymap.set({ 'n', 'v' }, '<C-s>m', '<cmd>ChatGPTRun grammar_correction<CR>', { desc = 'ChatGPT grammar' })
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -31,20 +31,20 @@ return {
       local cmp = require('cmp')
       cmp.setup({
         mapping = cmp.mapping.preset.insert({
-          ['<C-y>'] = require('minuet').make_cmp_map(),
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
-          ['<Tab>'] = cmp.mapping(function(fallback)
+          ['<C-s>y'] = require('minuet').make_cmp_map(),
+          ['<C-s>b'] = cmp.mapping.scroll_docs(-4),
+          ['<C-s>f'] = cmp.mapping.scroll_docs(4),
+          ['<C-s>s'] = cmp.mapping.complete(),
+          ['<C-s>e'] = cmp.mapping.abort(),
+          ['<C-s>r'] = cmp.mapping.confirm({ select = true }),
+          ['<C-s>j'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             else
               fallback()
             end
           end, { 'i', 's' }),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
+          ['<C-s>k'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
             else
@@ -77,9 +77,9 @@ return {
         nes = {
           enabled = true,
           keymap = {
-            accept_and_goto = "<leader>ca",
+            accept_and_goto = "<C-s>a",
             accept = false,
-            dismiss = "<Esc>"
+            dismiss = "<C-s>d"
           }
         }
       })
@@ -101,7 +101,7 @@ return {
     },
     config = function()
       require('minuet').setup({
-        provider = 'claude',
+        provider = 'gemini',
         provider_options = {
           openai = {
             model = 'gpt-4o-mini',
