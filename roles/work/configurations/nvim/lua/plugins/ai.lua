@@ -76,11 +76,6 @@ return {
         panel = { enabled = false },
         nes = {
           enabled = true,
-          keymap = {
-            accept_and_goto = "<C-s>a",
-            accept = false,
-            dismiss = "<C-s>d"
-          }
         }
       })
     end,
@@ -121,18 +116,6 @@ return {
               return vim.fn.system("security find-generic-password -a Google -s Gemini -w"):gsub("\n", "")
             end,
           },
-          openai_compatible = {
-            model = 'goose-claude-4-5-sonnet',
-            end_point = 'https://block-lakehouse-production.cloud.databricks.com/serving-endpoints/chat/completions',
-            api_key = function()
-              return vim.fn.system("security find-generic-password -a Databrick -s API -w"):gsub("\n", "")
-            end,
-            name = 'Databricks',
-            stream = true,
-            optional = {
-              max_tokens = 256
-            },
-          }
         },
       })
     end,
