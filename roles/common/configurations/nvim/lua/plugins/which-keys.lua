@@ -5,6 +5,7 @@ return {
     spec = {
       -- Define group labels for better organization
       { "<C-s>",     group = "AI/Completion" },
+      { "<leader>a", group = "Avante" },
       { "<leader>f", group = "Find" },
       { "<leader>g", group = "Git" },
       { "<leader>t", group = "Tree/Toggle" },

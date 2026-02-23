@@ -1,5 +1,60 @@
 return {
   {
+    'yetone/avante.nvim',
+    event = 'VeryLazy',
+    version = false,
+    build = 'make',
+    opts = {
+      provider = 'claude-code',
+      providers = {
+        openai = {
+          model = 'gpt-4o-mini',
+          api_key_name = 'cmd:security find-generic-password -a OpenAI -s ChatGPT -w',
+        },
+        claude = {
+          model = 'claude-sonnet-4-6',
+          api_key_name = 'cmd:security find-generic-password -a Anthropic -s Claude -w',
+        },
+        gemini = {
+          model = 'gemini-2.5-pro',
+          api_key_name = 'cmd:security find-generic-password -a Google -s Gemini -w',
+        },
+      },
+      acp_providers = {
+        ['claude-code'] = {
+          command = "npx",
+          args = { "@zed-industries/claude-code-acp" },
+          env = {
+            NODE_NO_WARNINGS = "1",
+            ANTHROPIC_API_KEY = vim.fn.system('security find-generic-password -a Anthropic -s Claude -w'):gsub('\n', ''),
+          },
+        },
+        ['gemini-cli'] = {
+          command = "gemini",
+          args = { "--experimental-acp" },
+          env = {
+            NODE_NO_WARNINGS = "1",
+            GEMINI_API_KEY = vim.fn.system('security find-generic-password -a Google -s Gemini -w'):gsub('\n', ''),
+          },
+        },
+        ['codex'] = {
+          command = "npx",
+          args = { "@zed-industries/codex-acp" },
+          env = {
+            NODE_NO_WARNINGS = "1",
+            OPENAI_API_KEY = vim.fn.system('security find-generic-password -a OpenAI -s ChatGPT -w'):gsub('\n', ''),
+          },
+        },
+        ['goose'] = { command = "goose", args = { "acp" } },
+      },
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'MeanderingProgrammer/render-markdown.nvim',
+    },
+  },
+  {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
