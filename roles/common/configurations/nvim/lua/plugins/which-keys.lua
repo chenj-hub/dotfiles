@@ -4,13 +4,14 @@ return {
   opts = {
     spec = {
       -- Define group labels for better organization
-      { "<C-s>",     group = "AI/Completion" },
-      { "<leader>a", group = "Avante" },
       { "<leader>f", group = "Find" },
       { "<leader>g", group = "Git" },
       { "<leader>t", group = "Tree/Toggle" },
       { "<leader>l", group = "LSP" },
       { "<leader>d", group = "Diff/Diagnostics" },
+      { "<leader>c",  group = "AI" },
+      { "<leader>cn", desc = "Copilot: Accept NES" },
+      { "<leader>cd", desc = "Copilot: Dismiss NES" },
     },
   },
   keys = {
