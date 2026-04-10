@@ -1,5 +1,6 @@
 ---
 dependencies_list:
+  - bazelisk
   - fzf
   - gh
   - git
