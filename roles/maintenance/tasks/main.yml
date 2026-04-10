@@ -1,4 +1,12 @@
 ---
+- name: Create local bin
+  ansible.builtin.file:
+    path: "/usr/local/bin"
+    state: directory
+    owner: root
+    mode: "0755"
+  become: true
+
 - name: Copy clean_docker.script to executable path
   ansible.builtin.copy:
     src: "{{ role_path }}/files/clean_docker.sh"

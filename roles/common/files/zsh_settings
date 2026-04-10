@@ -20,9 +20,7 @@ fi
 # = history                                                                    =
 # ==============================================================================
 
-# Disable per-terminal-session command history
-export SHELL_SESSIONS_DISABLE=1
-
+setopt SHARE_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS

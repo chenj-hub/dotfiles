@@ -3,8 +3,11 @@
   ansible.builtin.set_fact:
     brew_prefix: "{{ '/opt/homebrew' if ansible_architecture == 'arm64' else '/usr/local' }}"
 
-- name: Upgrade all Homebrew packages
+- name: Update all Homebrew packages
   ansible.builtin.command: "{{ brew_prefix }}/bin/brew update --auto-update"
+
+- name: Update all Homebrew packages
+  ansible.builtin.command: "{{ brew_prefix }}/bin/brew upgrade"
 
 - name: Install dependencies
   community.general.homebrew:
@@ -20,7 +23,6 @@
     - appcleaner
     - hiddenbar
     - karabiner-elements
-    - logi-options+
     - reattach-to-user-namespace
     - rectangle
     - starship
