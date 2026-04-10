@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.6',
+  version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
@@ -21,16 +21,16 @@ return {
           '--line-number',
           '--column',
           '--smart-case',
-          '--hidden',           -- Search hidden files
-          '--follow',           -- Follow symlinks
-          '--glob=!**/.git/*', -- Exclude .git directory
-          '--glob=!**/.svn/*', -- Exclude .svn directory
-          '--glob=!**/.hg/*',  -- Exclude .hg directory
-          '--glob=!**/.DS_Store', -- Exclude .DS_Store files
+          '--hidden',                  -- Search hidden files
+          '--follow',                  -- Follow symlinks
+          '--glob=!**/.git/*',         -- Exclude .git directory
+          '--glob=!**/.svn/*',         -- Exclude .svn directory
+          '--glob=!**/.hg/*',          -- Exclude .hg directory
+          '--glob=!**/.DS_Store',      -- Exclude .DS_Store files
           '--glob=!**/node_modules/*', -- Exclude node_modules
-          '--glob=!**/.venv/*', -- Exclude Python virtual environments
-          '--glob=!**/__pycache__/*', -- Exclude Python cache
-          '--glob=!**/*.pyc',  -- Exclude Python compiled files
+          '--glob=!**/.venv/*',        -- Exclude Python virtual environments
+          '--glob=!**/__pycache__/*',  -- Exclude Python cache
+          '--glob=!**/*.pyc',          -- Exclude Python compiled files
         },
 
         -- File ignore patterns (for file pickers)
@@ -161,9 +161,9 @@ return {
         find_files = {
           -- Use fd if available, otherwise fall back to find
           find_command = vim.fn.executable("fd") == 1
-            and { "fd", "--type", "f", "--hidden", "--follow", "--exclude", ".git", "--strip-cwd-prefix" }
-            or { "rg", "--files", "--hidden", "--follow", "--glob=!**/.git/*" },
-          hidden = false,  -- We handle hidden files via find_command
+              and { "fd", "--type", "f", "--hidden", "--follow", "--exclude", ".git", "--strip-cwd-prefix" }
+              or { "rg", "--files", "--hidden", "--follow", "--glob=!**/.git/*" },
+          hidden = false, -- We handle hidden files via find_command
         },
 
         live_grep = {

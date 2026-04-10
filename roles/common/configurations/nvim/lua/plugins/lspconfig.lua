@@ -9,7 +9,7 @@ return {
   config = function()
     require("mason").setup()
 
-    local servers = { "ansiblels", "bashls", "lua_ls", "gopls", "pylsp", "ruby_lsp", "terraformls", "yamlls" }
+    local servers = {"lua_ls", "gopls", "pylsp"}
 
     require("mason-lspconfig").setup({
       ensure_installed = servers,

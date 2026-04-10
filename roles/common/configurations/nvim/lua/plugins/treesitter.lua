@@ -1,18 +1,12 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   config = function()
-    require("nvim-treesitter.configs").setup({
+    require("nvim-treesitter.config").setup({
       ensure_installed = {
         "bash",
         "c",
         "diff",
         "go",
-        "hcl",
-        "html",
-        "javascript",
-        "jsdoc",
-        "json",
-        "jsonc",
         "lua",
         "luadoc",
         "luap",
@@ -21,11 +15,7 @@ return {
         "python",
         "query",
         "regex",
-        "ruby",
-        "terraform",
         "toml",
-        "tsx",
-        "typescript",
         "vim",
         "vimdoc",
         "xml",
