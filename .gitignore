@@ -1,4 +1,6 @@
 .ansible
 .vscode
 .claude/
+.venv/
+.idea/
 uv.lock
