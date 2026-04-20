@@ -4,7 +4,6 @@ return {
     event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
       'MeanderingProgrammer/render-markdown.nvim',
     },
     keys = {
@@ -17,24 +16,10 @@ return {
     opts = {
       adapters = {
         http = {
-          gemini = function()
-            return require('codecompanion.adapters').extend('gemini', {
-              env = {
-                api_key = 'cmd:security find-generic-password -a Google -s Gemini -w',
-              },
-            })
-          end,
           openai = function()
             return require('codecompanion.adapters').extend('openai', {
               env = {
                 api_key = 'cmd:security find-generic-password -a OpenAI -s ChatGPT -w',
-              },
-            })
-          end,
-          anthropic = function()
-            return require('codecompanion.adapters').extend('anthropic', {
-              env = {
-                api_key = 'cmd:security find-generic-password -a Anthropic -s Claude -w',
               },
             })
           end,
@@ -44,17 +29,6 @@ return {
             return require('codecompanion.adapters').extend('claude_code', {
               commands = {
                 default = { 'npx', '@zed-industries/claude-code-acp' },
-              },
-              env = {
-                ANTHROPIC_API_KEY = 'cmd:security find-generic-password -a Anthropic -s Claude -w',
-              },
-            })
-          end,
-          gemini_cli = function()
-            return require('codecompanion.adapters').extend('gemini_cli', {
-              defaults = { auth_method = 'gemini-api-key' },
-              env = {
-                GEMINI_API_KEY = 'cmd:security find-generic-password -a Google -s Gemini -w',
               },
             })
           end,
@@ -69,14 +43,11 @@ return {
               },
             })
           end,
-          goose = function()
-            return require('codecompanion.adapters').extend('goose', {})
-          end,
         },
       },
       interactions = {
         chat   = { adapter = 'codex' },
-        inline = { adapter = 'gemini' },
+        inline = { adapter = 'openai' },
         cmd    = { adapter = 'claude_code' },
       },
       opts = { log_level = 'ERROR' },
@@ -116,7 +87,7 @@ return {
       cmp.setup({
         mapping = cmp.mapping.preset.insert({
           ['<C-y>'] = require('minuet').make_cmp_map(),
-      })
+      })})
     end,
   },
   {
@@ -160,18 +131,6 @@ return {
             model = 'gpt-4o-mini',
             api_key = function()
               return vim.fn.system("security find-generic-password -a OpenAI -s ChatGPT -w"):gsub("\n", "")
-            end,
-          },
-          claude = {
-            model = 'claude-haiku-4-5',
-            api_key = function()
-              return vim.fn.system("security find-generic-password -a Anthropic -s Claude -w"):gsub("\n", "")
-            end,
-          },
-          gemini = {
-            model = 'gemini-2.5-flash-lite',
-            api_key = function()
-              return vim.fn.system("security find-generic-password -a Google -s Gemini -w"):gsub("\n", "")
             end,
           },
         },

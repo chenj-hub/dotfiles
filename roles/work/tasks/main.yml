@@ -15,16 +15,12 @@
   loop:
     - debug.logging.properties
 
-- name: Tap a Homebrew repository, state present
-  community.general.homebrew_tap:
-    name: "{{ item }}"
-  loop: "{{ work_tap_list }}"
-
 - name: Install dependencies
   community.general.homebrew:
     name: "{{ item }}"
     state: present
   loop: "{{ work_list }}"
+  ignore_errors: true
 
 - name: Configure for work use
   ansible.builtin.copy:

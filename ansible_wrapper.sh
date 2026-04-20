@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-if [[ $OSTYPE == darwin ]]; then
+if [[ $OSTYPE =~ darwin ]]; then
   command -v brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
