@@ -15,30 +15,6 @@
   loop:
     - debug.logging.properties
 
-- name: Install dependencies
-  community.general.homebrew:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ work_list }}"
-  ignore_errors: true
-
-- name: Configure for work use
-  ansible.builtin.copy:
-    src: "{{ role_path }}/configurations/{{ item.config }}"
-    dest: "{{ ansible_env.HOME }}/.config/"
-    owner: "{{ ansible_env.USER }}"
-    mode: "0755"
-    follow: true
-  when: item.name in dependencies_list
-  loop:
-    - { name: "neovim", config: "nvim" }
-
-- name: Clean up Bazel cache
-  ansible.builtin.blockinfile:
-    path: "{{ maintenance_script_path }}"
-    marker: "# {mark} Remove Bazel cache"
-    block: |
-      rm -rf "/private/var/tmp/_bazel_$USER"
-  become: true
-  notify:
-    - Kickstart maintenance LaunchDaemon
+- name: Install dependencies for Darwin
+  ansible.builtin.include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'

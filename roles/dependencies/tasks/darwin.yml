@@ -21,6 +21,8 @@
     state: present
   loop:
     - appcleaner
+    - bazelisk
+    - go
     - hiddenbar
     - karabiner-elements
     - reattach-to-user-namespace

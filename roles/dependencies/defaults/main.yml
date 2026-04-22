@@ -1,10 +1,8 @@
 ---
 dependencies_list:
-  - bazelisk
   - fzf
   - gh
   - git
-  - go
   - jq
   - neovim
   - ripgrep
