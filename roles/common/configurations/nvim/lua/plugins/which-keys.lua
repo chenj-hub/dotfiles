@@ -9,9 +9,6 @@ return {
       { "<leader>t", group = "Tree/Toggle" },
       { "<leader>l", group = "LSP" },
       { "<leader>d", group = "Diff/Diagnostics" },
-      { "<leader>c",  group = "AI" },
-      { "<leader>cn", desc = "Copilot: Accept NES" },
-      { "<leader>cd", desc = "Copilot: Dismiss NES" },
     },
   },
   keys = {
