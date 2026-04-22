@@ -18,6 +18,7 @@
     state: present
   become: true
   with_items: "{{ dependencies_list }}"
+  ignore_errors: true
 
 - name: Upgrade dependencies
   ansible.builtin.apt:
