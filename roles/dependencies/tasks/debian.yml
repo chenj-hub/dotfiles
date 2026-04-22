@@ -33,22 +33,5 @@
   with_items:
     - linux-headers-generic
     - build-essential
+    - starship
     - xclip
-
-- name: Check if starship is installed
-  ansible.builtin.command: which starship
-  ignore_errors: true
-  changed_when: false
-  register: starship_installed
-
-- name: Install starship
-  ansible.builtin.get_url:
-    url: https://starship.rs/install.sh
-    dest: /tmp/install_starship.sh
-    mode: "0755"
-  when: starship_installed.rc != 0
-
-- name: Run starship installer
-  ansible.builtin.command: /tmp/install_starship.sh --yes
-  when: starship_installed.rc != 0
-  changed_when: false
