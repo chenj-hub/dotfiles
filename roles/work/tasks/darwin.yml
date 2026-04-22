@@ -15,14 +15,3 @@
   become: true
   notify:
     - Kickstart maintenance LaunchDaemon
-
-- name: Configure for work use
-  ansible.builtin.copy:
-    src: "{{ role_path }}/configurations/{{ item.config }}"
-    dest: "{{ ansible_env.HOME }}/.config/"
-    owner: "{{ ansible_env.USER }}"
-    mode: "0755"
-    follow: true
-  when: item.name in dependencies_list
-  loop:
-    - { name: "neovim", config: "nvim" }
