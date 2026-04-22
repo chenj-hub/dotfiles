@@ -12,7 +12,7 @@ if ! command -v uv &> /dev/null; then
   else
     curl -LsSf https://astral.sh/uv/install.sh | sh
     # shellcheck source=/dev/null
-    source "$HOME/.local/bin/env"
+    [ -f "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
   fi
 else
   echo "uv is already installed"
