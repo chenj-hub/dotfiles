@@ -1,0 +1,4 @@
+---
+- name: Install dependencies for Darwin
+  ansible.builtin.include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'

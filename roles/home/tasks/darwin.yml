@@ -1,0 +1,22 @@
+---
+- name: Install home dependencies
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ home_list }}"
+  ignore_errors: true
+
+- name: Create playlist directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Music/playlist_dirs"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+
+- name: Install yt-dlp script to executable path
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/download_music"
+    dest: /usr/local/bin/download_music
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+  become: true

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+PLAYLIST_DIR="$HOME/Music/playlist_dirs"
+COOKIE_TXT="$HOME/Downloads/www.youtube.com_cookies.txt"
+
+cleanup() {
+    echo "Cleanup cookies..."
+    [[ -f "$COOKIE_TXT" ]] && rm -f "$COOKIE_TXT"
+}
+
+trap cleanup EXIT
+
+yt-dlp -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --embed-thumbnail \
+  --add-metadata \
+  --download-archive "$PLAYLIST_DIR/downloaded.txt" \
+  --trim-filenames 180 \
+  -c \
+  -N 8 \
+  -o "$PLAYLIST_DIR/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s" \
+  --cookies "$COOKIE_TXT" \
+  -a "$PLAYLIST_DIR/playlists.txt"

@@ -12,6 +12,9 @@
     - role: work
       tags: work
       when: work is defined
+    - role: home
+      tags: home
+      when: home is defined
 
   handlers:
     - name: Kickstart maintenance LaunchDaemon
