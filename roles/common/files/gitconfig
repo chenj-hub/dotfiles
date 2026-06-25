@@ -59,6 +59,8 @@
   dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
   tree = log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
   branch-recent = for-each-ref --sort=committerdate refs/heads/ --format=%(committerdate) %(refname:short)
+  worktree-clean = "!f() {\n  git branch | sed -n \"s/^+ $USER\\/\\(.*\\)$/\\1/p\" | while read -r branch; do\n    git worktree remove \"../$branch\"\n  done\n  git worktree prune\n}; f"
+  worktree-new = "!f() {\n  branch=\"$1\"\n  if [ -z \"$branch\" ]; then\n    echo \"Usage: git worktree-new <branch>\" >&2\n    return 1\n  fi\n\n  git worktree add \"../${branch##*/}\" \"$branch\"\n}; f"
 [merge]
   ff = only
 [push]
