@@ -3,7 +3,6 @@ work_list:
   - apparency
   - aria2
   - awscli
-  - codex
   - hyperfine
   - node
   - shellcheck
