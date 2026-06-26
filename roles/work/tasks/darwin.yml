@@ -11,7 +11,7 @@
     path: "{{ maintenance_script_path }}"
     marker: "# {mark} Remove Bazel cache"
     block: |
-      rm -rf "/private/var/tmp/_bazel_{{ ansible_env.USER }}"
+      trash_contents "/private/var/tmp/_bazel_{{ ansible_env.USER }}"
   become: true
   notify:
     - Kickstart maintenance LaunchDaemon
