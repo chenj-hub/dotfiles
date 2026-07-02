@@ -3,9 +3,15 @@ work_list:
   - apparency
   - aria2
   - awscli
+  - brave-browser
+  - codex
+  - claude-code
   - hyperfine
   - node
+  - okta-verify
+  - pycharm
   - shellcheck
+  - slack
   - suspicious-package
   - xcodes
   - yq
