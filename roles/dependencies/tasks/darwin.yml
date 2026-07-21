@@ -23,6 +23,7 @@
   loop:
     - appcleaner
     - bazelisk
+    - fd
     - go
     - hiddenbar
     - karabiner-elements

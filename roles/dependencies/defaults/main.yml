@@ -1,6 +1,5 @@
 ---
 dependencies_list:
-  - fd
   - fzf
   - gh
   - git
